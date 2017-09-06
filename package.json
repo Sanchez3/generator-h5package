@@ -1,6 +1,6 @@
 {
   "name": "generator-h5package",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Yeoman generator to generate h5 games base on webpack",
   "main": "index.js",
   "scripts": {
