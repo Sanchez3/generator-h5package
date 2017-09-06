@@ -1,0 +1,39 @@
+{
+  "name": "generator-phaser-h5",
+  "version": "3.8.1",
+  "description": "A Yeoman generator to generate h5 games with phaser.js or not",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "phaser",
+    "es2015",
+    "gulp",
+    "html5",
+    "browserify"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sanchez3/generator-phaser-h5.git"
+  },
+  "author": {
+    "name": "Sanchez Liu",
+    "email": "lsch001@163.com",
+    "url": "https://github.com/Sanchez3"
+  },
+  "dependencies": {
+    "chalk": "^2.0.1",
+    "yeoman-generator": "^1.1.1",
+    "yosay": "^2.0.0"
+  },
+  "devDependencies": {
+    "fs-extra": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "mocha": "^3.4.2",
+    "yeoman-assert": "^3.0.0",
+    "yeoman-test": "^1.7.0"
+  },
+  "license": "MIT"
+}
