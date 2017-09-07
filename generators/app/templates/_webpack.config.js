@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: __dirname + "/dist",
         filename: 'assets/js/[name].js',
-        publicPath: ''
+        publicPath: 'localhost:8888/dist'
     },
     module: {
         rules: [{
@@ -42,7 +42,10 @@ module.exports = {
         }]
 
     },
+    
+    devtool: 'eval-source-map',
     devServer: {
+        contentBase: path.join(__dirname, "dist"), //本地服务器所加载的页面所在的目录
         port: 8888,
         colors: true, //终端中输出结果为彩色
         historyApiFallback: true, //不跳转
@@ -57,7 +60,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: 'Custom template',
-            chunks:["main"],
+            chunks: ["main"],
             template: './src/index.html',
             inject: 'body',
             hash: true,
