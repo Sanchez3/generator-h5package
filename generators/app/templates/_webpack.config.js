@@ -8,7 +8,8 @@ module.exports = {
     entry: __dirname + "/src/assets/js/main.js",
     output: {
         path: __dirname + "/dist",
-        filename: 'assets/js/[name]-[chunkhash].js'
+        filename: 'assets/js/[name]-[chunkhash].js',
+        publicPath: ''
     },
     module: {
         rules: [{
@@ -29,7 +30,7 @@ module.exports = {
             test: /(\.scss|\.sass)$/,
             use: ["style-loader", "css-loader", "sass-loader"]
         }, {
-            test: /\.(html)$/,
+            test: /\.html$/,
             use: {
                 loader: 'html-loader',
                 options: {
@@ -54,10 +55,7 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new HtmlWebpackPlugin({
-
-
-        })
+        new HtmlWebpackPlugin()
 
     ]
 };
