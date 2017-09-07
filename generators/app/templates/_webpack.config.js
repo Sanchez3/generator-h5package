@@ -8,7 +8,7 @@ module.exports = {
     entry: __dirname + "/src/assets/js/main.js",
     output: {
         path: __dirname + "/dist",
-        filename: 'assets/js/[name]-[chunkhash].js',
+        filename: 'assets/js/[name].js',
         publicPath: ''
     },
     module: {
@@ -55,7 +55,17 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            title: 'Custom template',
+            chunks:["main"],
+            template: './src/index.html',
+            inject: 'body',
+            hash: true,
+            minify: { //压缩HTML文件
+                removeComments: true, //移除HTML中的注释
+                collapseWhitespace: true //删除空白符与换行符
+            }
+        })
 
     ]
 };
