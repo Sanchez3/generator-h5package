@@ -35,6 +35,6 @@
     {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "webpack --config webpack.config.js",
-        "dev": "webpack-dev-server --devtool --progress"
+        // "dev": "webpack-dev-server --devtool --progress"
     }
 }

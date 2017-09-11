@@ -14,7 +14,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'assets/js/[name].js',
-        publicPath: 'localhost:8888/dist'
+        // publicPath: 'localhost:8888/dist'
     },
     module: {
         rules: [{
@@ -50,14 +50,14 @@ module.exports = {
     },
 
 
-    devServer: {
-        contentBase: path.resolve(__dirname, 'dist'), //本地服务器所加载的页面所在的目录
-        port: 8888,
-        colors: true, //终端中输出结果为彩色
-        historyApiFallback: true, //不跳转
-        inline: true, //实时刷新
-        publicPath: '/'
-    },
+    // devServer: {
+    //     contentBase: path.resolve(__dirname, 'dist'), //本地服务器所加载的页面所在的目录
+    //     port: 8888,
+    //     colors: true, //终端中输出结果为彩色
+    //     historyApiFallback: true, //不跳转
+    //     inline: true, //实时刷新
+    //     publicPath: '/'
+    // },
     plugins: [
         //清空dist
         new CleanWebpackPlugin(["dist"], {
