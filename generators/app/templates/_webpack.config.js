@@ -6,6 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.css');
 var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.css');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -29,7 +30,8 @@ module.exports = {
         }, {
             test: /\.css$/,
             include: /src/,
-            use: extractCSS.extract(['css-loader'])
+            use: extractCSS.extract('css-loader'),
+
         }, {
             test: /(\.scss|\.sass)$/,
             use: extractSASS.extract(['css-loader', 'sass-loader'])
@@ -65,8 +67,13 @@ module.exports = {
         }),
         extractCSS,
         extractSASS,
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/,
+            cssProcessor: require('cssnano'),
+            cssProcessorOptions: { discardComments: { removeAll: true } },
+            canPrint: true
+        }),
         new HtmlWebpackPlugin({
-            title: 'Custom template',
             chunks: ["main"],
             template: './src/index.html',
             inject: 'body',
