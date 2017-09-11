@@ -2,15 +2,19 @@
  * Created by sanchez 
  */
 'use strict';
-
+// import CSS
+// import animate_css from 'animate.css/animate.min.css';
 import css from '../css/css.css';
 import scss from '../css/sass.scss';
 
-// window.game = new Phaser.Game('100', '100', Phaser.CANVAS, 'mycanvas', null, true);
-// window.game.state.add('Boot', require('./states/boot'));
-// window.game.state.add('Preloader', require('./states/preloader'));
-// window.game.state.add('State1', require('./states/state1'));
-// window.game.state.start('Boot');
+
+// import Js Plugins/Entities
+
+//ES6 Module
+import Bar1 from './entities/Bar1';
+import Howler from 'howler';
+//CommonJS
+var Bar2=require('./entities/Bar2');
 
 
 window.h5 = {
