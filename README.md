@@ -1,4 +1,15 @@
 # 基于Webpack的前端h5项目生成器
+
+<div align="left">
+    <div>
+        <a href="https://www.npmjs.com/package/generator-h5package"><img alt="npm version" src="https://img.shields.io/npm/v/generator-h5package.svg"></a>
+        <a href="https://travis-ci.org/Sanchez3/generator-h5package"><img alt="Travis CI Build Status" src="https://travis-ci.org/Sanchez3/generator-h5package.svg?branch=master"></a>
+        <a href="https://david-dm.org/Sanchez3/generator-h5package"><img alt="dependencies status" src="https://david-dm.org/Sanchez3/generator-h5package/status.svg"></a>
+        <a href="https://david-dm.org/Sanchez3/generator-h5package?type=dev"><img alt="devDependencies status" src="https://david-dm.org/Sanchez3/generator-h5package/dev-status.svg"/></a>
+        <a href="https://www.npmjs.com/package/generator-h5package"><img alt="Downloads" src="https://img.shields.io/npm/dm/generator-h5package.svg"></a>
+    </div>
+</div>
+
 前端项目工程化，使用`Webpack+ Native Js` 方式开发项目，之前写过一个[基于gulp的前端h5项目生成器](https://github.com/Sanchez3/generator-phaser-h5)
 
 
