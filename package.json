@@ -4,7 +4,7 @@
   "description": "A Yeoman generator to generate html5 projects base on webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "yeoman-generator",
@@ -14,7 +14,6 @@
     "commonjs",
     "es6",
     "html5"
-
   ],
   "repository": {
     "type": "git",
