@@ -3,21 +3,21 @@
 
 
 
-##WHY
+## WHY
 
-​	[Gulp](https://gulpjs.com/) 只是个基于流的构建工具，优化前端工作流程，比如监控、压缩js、css、编译Sass等等。
+​[Gulp](https://gulpjs.com/) 只是个基于流的构建工具，优化前端工作流程，比如监控、压缩js、css、编译Sass等等。
 
-​	[Webpack](https://webpack.js.org/) 则是个模块化管理的工具，能够完成Gulp所实现的绝大多数功能，也能通过`webpack stream`将Webpack整合到Gulp中。
+​[Webpack](https://webpack.js.org/) 则是个模块化管理的工具，能够完成Gulp所实现的绝大多数功能，也能通过`webpack stream`将Webpack整合到Gulp中。
 
->Note:   Gulp部分功能目前是强于Webpack，例如雪碧图。
+>Note: Gulp部分功能目前是强于Webpack，例如雪碧图。
 >
 >不过Webpack在模块化方案更为优秀。随着项目庞大，项目会分工分块开发，所有script模块/脚本都需要引入到网页中，大量外部文件会使得网页承担多个HTTP请求带来的开销，影响HTML的响应速度。
 
-​	此外，Webpack与[browserify](https://github.com/substack/node-browserify)，[RequireJS](http://requirejs.org/)相比，吸取了大量已有方案的优点与教训，也解决了很多前端开发过程中已存在的痛点，如代码的拆分与异步加载、对非 JavaScript 资源的支持等。当然另外两个打包工具也有可圈可点之处。
+​此外，Webpack与[browserify](https://github.com/substack/node-browserify)，[RequireJS](http://requirejs.org/)相比，吸取了大量已有方案的优点与教训，也解决了很多前端开发过程中已存在的痛点，如代码的拆分与异步加载、对非 JavaScript 资源的支持等。当然另外两个打包工具也有可圈可点之处。
 
 > Note: RequireJS  的模块规范 AMD 并不兼容 JS 未来的模块化方案。
 
-​	目前webpack与越来越多的框架相容，也可以通过npm添加你所需要的前端框架以及插件 `eg. React, Angular, Vue AND JQuery, gsap, animate.css, howler, etc. `
+​目前webpack与越来越多的框架相容，也可以通过npm添加你所需要的前端框架以及插件 `eg. React, Angular, Vue AND JQuery, gsap, animate.css, howler, etc. `
 
 
 
@@ -65,7 +65,7 @@ The release in  `dist/`
 
 
 
-###文档结构
+### 文档结构
 
 **开发时目录结构 npm run start**
 
@@ -118,7 +118,7 @@ The release in  `dist/`
 
 
 
-###参考
+### 参考
 
 [gulp & webpack整合，鱼与熊掌我都要！](http://www.jianshu.com/p/9724c47b406c)
 
