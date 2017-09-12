@@ -24,7 +24,6 @@ describe('yo phaser-h5', () => {
     it('creates expected files', () => {
 
         const expected = [
-            // add files you expect to exist here.
             'webpack.config.js',
             'src/assets/css/css.css',
             'src/assets/img/favicon.ico',
