@@ -1,0 +1,9 @@
+sudo: false
+language: node_js
+node_js:
+  - v8
+  - v6
+after_script:
+  - npm install -g codecov
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
