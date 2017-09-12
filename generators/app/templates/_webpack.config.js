@@ -9,7 +9,6 @@ var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.css');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval-source-map',
     entry: path.resolve(__dirname, "src/assets/js/main.js"),
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -48,16 +47,10 @@ module.exports = {
         }]
 
     },
-
-
-    // devServer: {
-    //     contentBase: path.resolve(__dirname, 'dist'), //本地服务器所加载的页面所在的目录
-    //     port: 8888,
-    //     colors: true, //终端中输出结果为彩色
-    //     historyApiFallback: true, //不跳转
-    //     inline: true, //实时刷新
-    //     publicPath: '/'
-    // },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'), //本地服务器所加载的页面所在的目录
+    },
     plugins: [
         //清空dist
         new CleanWebpackPlugin(["dist"], {
