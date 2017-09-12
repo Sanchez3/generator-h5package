@@ -4,15 +4,15 @@ var path = require('path');
 var CleanWebpackPlugin = require("clean-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.css');
-var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.css');
+var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.min.css');
+var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.min.css');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, "src/assets/js/main.js"),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/[name].js',
+        filename: 'assets/js/[name].min.js',
         // publicPath: 'localhost:8888/dist'
     },
     module: {
