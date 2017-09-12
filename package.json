@@ -1,16 +1,20 @@
 {
   "name": "generator-h5package",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Yeoman generator to generate html5 projects base on webpack",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "echo \"Error: no test specified\" && exit 1",
   },
   "keywords": [
     "yeoman-generator",
-    "es2015",
     "webpack",
-    "html5",
+    "JavaScript",
+    "es2015",
+    "commonjs",
+    "es6",
+    "html5"
+
   ],
   "repository": {
     "type": "git",
@@ -18,7 +22,7 @@
   },
   "author": {
     "name": "Sanchez Liu",
-    "email": "lsch001@163.com",
+    "email": "sanchezliu003@gmail.com",
     "url": "https://github.com/Sanchez3"
   },
   "dependencies": {
