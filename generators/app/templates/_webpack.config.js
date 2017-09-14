@@ -51,6 +51,9 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'), //本地服务器所加载的页面所在的目录
+        port: 9000,
+        disableHostCheck: true,
+        host: '0.0.0.0',
     },
     plugins: [
         //清空dist
