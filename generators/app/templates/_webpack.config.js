@@ -7,6 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.min.css');
 var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.min.css');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, "src/assets/js/main.js"),
@@ -58,6 +59,14 @@ module.exports = {
             verbose: true,
             dry: false
         }),
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, "src/assets/img"),
+            to: path.resolve(__dirname, "dist/assets/img")
+
+        }, {
+            from: path.resolve(__dirname, "src/assets/media"),
+            to: path.resolve(__dirname, "dist/assets/media"),
+        }]),
         extractCSS,
         extractSASS,
         new OptimizeCssAssetsPlugin({
@@ -65,7 +74,7 @@ module.exports = {
             cssProcessor: require('cssnano'),
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
-        }),
+        }, { copyUnmodified: true }),
         new HtmlWebpackPlugin({
             chunks: ["main"],
             template: './src/index.html',
