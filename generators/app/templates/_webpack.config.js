@@ -79,7 +79,7 @@ module.exports = {
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
         }, { copyUnmodified: true }),
-        new UglifyJSPlugin({ beautify: true }),
+        new UglifyJSPlugin({ compress: { warnings: true }, beautify: true }),
         new HtmlWebpackPlugin({
             chunks: ["main"],
             template: './src/index.html',
