@@ -8,6 +8,7 @@ var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.min.css');
 var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.min.css');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, "src/assets/js/main.js"),
@@ -78,6 +79,7 @@ module.exports = {
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
         }, { copyUnmodified: true }),
+        new UglifyJSPlugin({ beautify: true }),
         new HtmlWebpackPlugin({
             chunks: ["main"],
             template: './src/index.html',
