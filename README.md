@@ -127,6 +127,9 @@ The release in  `dist/`
 
 #### 1.x.x 正式发布
 
+- **1.2.x Add `uglifyjs-webpack-plugin`**
+
+
 
 
 ### 参考
