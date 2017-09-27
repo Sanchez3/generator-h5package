@@ -1,5 +1,5 @@
 'use strict';
-
+var webpack = require('webpack');
 var path = require('path');
 var CleanWebpackPlugin = require("clean-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,7 +11,10 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, "src/assets/js/main.js"),
+    entry: {
+        vendor: ['howler', 'gsap', 'jquery'],
+        app: path.resolve(__dirname, "src/assets/js/main.js"),
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'assets/js/[name].min.js',
@@ -73,6 +76,10 @@ module.exports = {
         }]),
         extractCSS,
         extractSASS,
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ["vendor"],
+            minChunks: Infinity
+        }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/,
             cssProcessor: require('cssnano'),
