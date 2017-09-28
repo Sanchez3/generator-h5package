@@ -8,17 +8,15 @@ var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.min.css');
 var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.min.css');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: {
         vendor: ['howler', 'gsap', 'jquery'],
-        app: path.resolve(__dirname, "src/assets/js/main.js"),
+        main: path.resolve(__dirname, "src/assets/js/main.js")
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/[name].min.js',
-        // publicPath: 'localhost:8888/dist'
+        filename: 'assets/js/[name].min.js'
     },
     module: {
         rules: [{
@@ -34,7 +32,7 @@ module.exports = {
         }, {
             test: /\.css$/,
             include: /src/,
-            use: extractCSS.extract('css-loader'),
+            use: extractCSS.extract('css-loader')
 
         }, {
             test: /(\.scss|\.sass)$/,
@@ -54,7 +52,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'), //本地服务器所加载的页面所在的目录
+        contentBase: path.resolve(__dirname, 'dist'),
         port: 9000,
         disableHostCheck: true,
         host: '0.0.0.0',
@@ -72,29 +70,40 @@ module.exports = {
 
         }, {
             from: path.resolve(__dirname, "src/assets/media"),
-            to: path.resolve(__dirname, "dist/assets/media"),
+            to: path.resolve(__dirname, "dist/assets/media")
         }]),
         extractCSS,
         extractSASS,
         new webpack.optimize.CommonsChunkPlugin({
-            names: ["vendor"],
-            minChunks: Infinity
+            names: "vendor"
         }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/,
             cssProcessor: require('cssnano'),
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
-        }, { copyUnmodified: true }),
-        new UglifyJSPlugin({ compress: { warnings: true }, beautify: true }),
+        }, {
+            copyUnmodified: true
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: true,
+                drop_console: false,
+                booleans: false,
+                loops: false
+            },
+            output: {
+                comments: false,
+                beautify: false
+            }
+        }),
         new HtmlWebpackPlugin({
-            chunks: ["main"],
             template: './src/index.html',
             inject: 'body',
             hash: true,
-            minify: { //压缩HTML文件
-                removeComments: true, //移除HTML中的注释
-                collapseWhitespace: true //删除空白符与换行符
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true
             }
         })
 
