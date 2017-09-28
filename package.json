@@ -1,6 +1,6 @@
 {
   "name": "generator-h5package",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "A Yeoman generator to generate html5 projects base on webpack",
   "main": "index.js",
   "scripts": {
