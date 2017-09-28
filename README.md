@@ -133,7 +133,7 @@ The release in  `dist/`
   - [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin) Extract text from a bundle, or bundles, into a separate file
   - [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin) optimize \ minimize CSS assets
   - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles
-  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), etc.
+  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), [commons-chunk-plugin](https://webpack.js.org/plugins/commons-chunk-plugin), [uglifyjs-webpack-plugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/), etc.
 
 - [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers
 
