@@ -75,7 +75,8 @@ module.exports = {
         extractCSS,
         extractSASS,
         new webpack.optimize.CommonsChunkPlugin({
-            names: "vendor"
+            names: "vendor",
+            minChunks: Infinity,
         }),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/,
