@@ -119,6 +119,70 @@ The release in  `dist/`
 
 
 
+### 插件
+
+通过npm管理插件，devDependencies 里面的插件只用于开发环境，不用于生产环境，而 dependencies 是需要发布到生产环境的。
+
+### devDependencies:
+
+*Note: npm install <packages> --save-dev*
+
+- webpack-plugins
+
+  - [sass-loader](https://www.npmjs.com/package/sass-loader)  loads a SASS/SCSS file and compiles it to CSS
+  - [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin) Extract text from a bundle, or bundles, into a separate file
+  - [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin) optimize \ minimize CSS assets
+  - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles
+  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), etc.
+
+- [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers
+
+  ​
+
+### dependencies:
+
+*Note: npm install <packages>*
+
+- [howler.js](https://howlerjs.com/) for audio
+- [Gsap](https://greensock.com/gsap) for javascript animation
+- [animate.css](https://daneden.github.io/animate.css/) for CSS animation style
+
+### others:
+
+*Note: Read Documentation For a Getting started guide, Usage , API docs, etc. check out or docs!*
+
+- [slick](http://kenwheeler.github.io/slick/) for slider
+- [Stats](https://github.com/mrdoob/stats.js) for JavaScript Performance Monitor
+
+**Use the following ways Sometime:**
+
+- Local In `webpack.config.js` Write entry vendor, Split your code into `vendor.js` and `main.js`:
+
+  ```
+  entry: {
+    vendor: ["jquery", "other-lib"],
+    main: path.resolve(__dirname, "src/assets/js/main.js")
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      // filename: "vendor.js"
+      // (Give the chunk a different name)
+
+      minChunks: Infinity,
+      // (with more entries, this ensures that no other module
+      //  goes into the vendor chunk)
+    })
+  ]
+  ```
+
+- Use `require(file)` or `import "module-name"` in `main.js`
+
+- Cdn [jsDelivr](http://www.jsdelivr.com/), [cdnjs](https://cdnjs.com/), [bootcdn](http://www.bootcdn.cn/) 
+
+
+
+
 
 
 ## WHAT
@@ -128,6 +192,7 @@ The release in  `dist/`
 #### 1.x.x 正式发布
 
 - **1.2.x Add `uglifyjs-webpack-plugin`**
+- **1.3.x Add `CommonsChunkPlugin`**
 
 
 
