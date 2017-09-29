@@ -47,6 +47,9 @@ module.exports = {
                     collapseWhitespace: false
                 }
             }
+        }, {
+            test: /\.(png|jpg)$/,
+            loader: 'url-loader?limit=8192'
         }]
 
     },
