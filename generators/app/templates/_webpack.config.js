@@ -11,12 +11,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        vendor: ['howler', 'gsap', 'jquery'],
+        vendor: ['howler'],
         main: path.resolve(__dirname, "src/assets/js/main.js")
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/[name].min.js'
+        filename: 'assets/js/[name].min.js',
+        publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
     },
     module: {
         rules: [{
@@ -48,8 +49,27 @@ module.exports = {
                 }
             }
         }, {
-            test: /\.(png|jpg)$/,
-            loader: 'url-loader?limit=8192'
+            test: /\.(gif|jpg|png|ico)\??.*$/,
+            use: {
+                loader: 'url-loader',
+                options: {
+                    limit: 1024,
+                    name: '[name].[ext]',
+                    publicPath: '../../',
+                    outputPath: 'assets/css/'
+                }
+            }
+        }, {
+            test: /\.(svg|woff|otf|ttf|eot)\??.*$/,
+            use: {
+                loader: 'url-loader',
+                options: {
+                    limit: 1024,
+                    name: '[name].[ext]',
+                    publicPath: '../../',
+                    outputPath: 'assets/css/'
+                }
+            }
         }]
 
     },
@@ -67,14 +87,14 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, "src/assets/img"),
-            to: path.resolve(__dirname, "dist/assets/img")
+        // new CopyWebpackPlugin([{
+        //     from: path.resolve(__dirname, "src/assets/img"),
+        //     to: path.resolve(__dirname, "dist/assets/img")
 
-        }, {
-            from: path.resolve(__dirname, "src/assets/media"),
-            to: path.resolve(__dirname, "dist/assets/media")
-        }]),
+        // }, {
+        //     from: path.resolve(__dirname, "src/assets/media"),
+        //     to: path.resolve(__dirname, "dist/assets/media")
+        // }]),
         extractCSS,
         extractSASS,
         new webpack.optimize.CommonsChunkPlugin({
@@ -91,7 +111,7 @@ module.exports = {
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: true,
+                warnings: false,
                 drop_console: false,
                 booleans: false,
                 loops: false
