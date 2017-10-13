@@ -27,6 +27,7 @@ describe('yo phaser-h5', () => {
             'webpack.config.js',
             'src/assets/css/css.css',
             'src/assets/img/favicon.ico',
+            'src/assets/img/favicon.png',
             'src/assets/css/sass.scss',
             'src/index.html',
             'package.json',
