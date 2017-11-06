@@ -36,9 +36,13 @@
 
 ## HOW 
 
-### 安装
+### 安装 / Install
 
-> Note:  Install [Node.js](https://nodejs.org/en/) First
+***
+
+
+
+> Note: Install [Node.js](https://nodejs.org/en/) First
 
 - **Get  [Yeoman](http://yeoman.io/) and `generator-h5package` via [npm](https://www.npmjs.com/).**
 
@@ -50,7 +54,11 @@
 
 
 
-### 使用
+### 使用 / Usage
+
+***
+
+
 
 1. **Create a directory to keep your project contents and go into it.**
 
@@ -76,7 +84,11 @@ The release in  `dist/`
 
 
 
-### 文档结构
+### 文档结构 / Directory Structure
+
+***
+
+
 
 **开发时目录结构 npm run start**
 
@@ -120,11 +132,15 @@ The release in  `dist/`
 
 
 
-### 插件
+### 插件 / Plugins
+
+***
+
+
 
 通过npm管理插件，devDependencies 里面的插件只用于开发环境，不用于生产环境，而 dependencies 是需要发布到生产环境的。
 
-### devDependencies:
+####devDependencies:
 
 *Note: npm install <packages> --save-dev*
 
@@ -138,9 +154,8 @@ The release in  `dist/`
 
 - [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers
 
-  ​
 
-### dependencies:
+####dependencies:
 
 *Note: npm install <packages>*
 
@@ -148,7 +163,7 @@ The release in  `dist/`
 - [Gsap](https://greensock.com/gsap) for javascript animation
 - [animate.css](https://daneden.github.io/animate.css/) for CSS animation style
 
-### others:
+####others:
 
 *Note: Read Documentation For a Getting started guide, Usage , API docs, etc. check out or docs!*
 
@@ -157,9 +172,9 @@ The release in  `dist/`
 
 **Use the following ways Sometime:**
 
-- Local In `webpack.config.js` Write entry vendor, Split your code into `vendor.js` and `main.js`:
+- Local In `webpack.common.js` Write entry vendor, Split your code into `vendor.js` and `main.js`:
 
-  ```
+  ```javascript
   entry: {
     vendor: ["jquery", "other-lib"],
     main: path.resolve(__dirname, "src/assets/js/main.js")
@@ -181,22 +196,48 @@ The release in  `dist/`
 
 - Cdn [jsDelivr](http://www.jsdelivr.com/), [cdnjs](https://cdnjs.com/), [bootcdn](http://www.bootcdn.cn/) 
 
+  ​
 
+
+###生产环境构建 / Production
+
+***
+
+**webpack.common.js** (Don't repeat yourself - DRY)
+”通用“配置
+- `entry`
+- `ouput`
+- `module(babel-loader, css-loader, sass-loader, url-loader)`
+- `plugins(CleanWebpackPlugin, ExtractTextPlugin,CommonsChunkPlugin,HtmlWebpackPlugin)`
+
+**webpack.dev.js** (development)
+
+”开发“配置
+
+- `devtool`
+- `devServer`
+
+**webpack.prod.js** (production)
+
+”生产“配置
+
+- `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
 
 
 
 
 ## WHAT
 
-### 版本
+### 版本 / Versions
 
-#### 1.x.x 正式发布
+#### 1.x.x 正式发布 
 
 - **1.2.x Add `uglifyjs-webpack-plugin`**
 - **1.3.x Add `CommonsChunkPlugin`**
+- **1.4.x Add `url-loader`**
 
-
-
+#### 2.x.x 分离开发和生产环境 
+- **2.0.x add `webpack-merge`**
 
 ### 参考
 
