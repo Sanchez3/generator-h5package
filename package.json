@@ -21,8 +21,9 @@
   },
   "author": {
     "name": "Sanchez Liu",
-    "email": "sanchezliu003@gmail.com",
-    "url": "https://github.com/Sanchez3"
+    "email": "lsch001@163.com",
+    "url": "https://github.com/Sanchez3",
+    "wechat": "sanchezliu"
   },
   "dependencies": {
     "chalk": "^2.0.1",
@@ -36,5 +37,9 @@
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.7.0"
   },
+   "bugs": {
+    "url": "https://github.com/Sanchez3/generator-h5package/issues"
+  },
+  "homepage": "https://github.com/Sanchez3/generator-h5package",
   "license": "MIT"
 }
