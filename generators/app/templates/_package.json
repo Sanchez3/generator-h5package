@@ -27,9 +27,9 @@
     },
     "dependencies":
     {
-        "animate.css": "latest",
-        "gsap": "latest",
-        "howler": "latest",
+        "animate.css": "^3.5.2",
+        "gsap": "^1.20.3",
+        "howler": "^2.0.5",
         "jquery": "^3.2.1"
     },
     "scripts":
