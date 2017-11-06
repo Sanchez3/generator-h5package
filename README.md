@@ -97,8 +97,9 @@ The release in  `dist/`
     ├── node_modules
     ├── index.html
     ├── package.json
-    └── webpack.config.js
-    
+    ├── webpack.common.js      #"common" configuration
+    ├── webpack.dev.js         #"development"
+    └── webpack.prod.js        #"production"
 ```
 
 **打包后目录结构 npm run build**
