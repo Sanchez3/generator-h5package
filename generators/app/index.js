@@ -56,7 +56,7 @@ module.exports = class extends Generator {
         );
         this.fs.copy(
             this.templatePath('_webpack.common.js'),
-            this.destinationPath('webpack.config.js'),
+            this.destinationPath('webpack.common.js'),
             this
         );
         this.fs.copy(
