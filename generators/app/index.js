@@ -61,12 +61,12 @@ module.exports = class extends Generator {
         );
         this.fs.copy(
             this.templatePath('_webpack.dev.js'),
-            this.destinationPath('webpack.config.js'),
+            this.destinationPath('webpack.dev.js'),
             this
         );
         this.fs.copy(
             this.templatePath('_webpack.prod.js'),
-            this.destinationPath('webpack.config.js'),
+            this.destinationPath('webpack.prod.js'),
             this
         );
 
