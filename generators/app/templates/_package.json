@@ -36,7 +36,7 @@
     "scripts":
     {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "NODE_ENV=development webpack-dev-server --inline --progress --config webpack.dev.js",
+        "start": "NODE_ENV=development webpack-dev-server --progress --config webpack.dev.js",
         "build": "NODE_ENV=production webpack --config webpack.prod.js"
 
     }
