@@ -6,7 +6,7 @@ var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var merge = require('webpack-merge');
 var common = require('./webpack.common.js');
 
-module.exports = merge(common,{
+module.exports = merge(common, {
     output: {
         publicPath: './'
     },
@@ -37,6 +37,11 @@ module.exports = merge(common,{
             output: {
                 comments: true,
                 beautify: true
+            }
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
             }
         })
     ]
