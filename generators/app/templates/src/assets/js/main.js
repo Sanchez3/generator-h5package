@@ -2,6 +2,12 @@
  * Created by sanchez 
  */
 'use strict';
+
+//check the environment
+// if (process.env.NODE_ENV !== 'production') {
+//     console.log('Looks like we are in development mode!');
+// }
+
 // import CSS
 // import animate_css from 'animate.css/animate.min.css';
 import css from '../css/css.css';
@@ -14,7 +20,7 @@ import scss from '../css/sass.scss';
 import Bar1 from './entities/Bar1';
 import Howler from 'howler';
 //CommonJS
-var Bar2=require('./entities/Bar2');
+var Bar2 = require('./entities/Bar2');
 
 
 window.h5 = {
