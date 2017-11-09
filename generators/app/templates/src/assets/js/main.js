@@ -144,7 +144,11 @@ window.h5 = {
         return that;
     }
 };
-window.h5.cssInit().eventInit();
+
+window.onload = function() {
+    window.h5.cssInit().eventInit();
+};
+
 
 
 function showStats() {
