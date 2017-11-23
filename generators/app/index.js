@@ -44,8 +44,13 @@ module.exports = class extends Generator {
     }
     writing() {
         this.fs.copyTpl(
-            this.templatePath('src'),
-            this.destinationPath('src'),
+            this.templatePath('src/index.html'),
+            this.destinationPath('src/index.html'),
+            this
+        );
+        this.fs.copy(
+            this.templatePath('src/assets/**'),
+            this.destinationPath('src/assets/'),
             this
         );
         mkdirp('src/assets/media');
