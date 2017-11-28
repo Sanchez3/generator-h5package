@@ -27,10 +27,13 @@ window.h5 = {
     rootResize2: function() {
         //orientation landscape width=1334px
         var wFsize;
-        var wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width :
-            window.innerWidth : window.innerWidth;
-        var wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ?
-            screen.height : window.innerHeight : window.innerHeight;
+        //screen.width screen.height  bug !!!
+        // var wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width :
+        //     window.innerWidth : window.innerWidth;
+        // var wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ?
+        //     screen.height : window.innerHeight : window.innerHeight;
+        var wWidth = window.innerWidth;
+        var wHeight = window.innerHeight;
         if (wWidth > wHeight) {
             wHeight = wWidth;
         }
@@ -51,14 +54,17 @@ window.h5 = {
         var isGnbr = uAgent.match(/GNBR/i);
         var isWeixin = uAgent.match(/MicroMessenger/i);
         var wFsize;
-        var wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width :
-            window.innerWidth : window.innerWidth;
-        var wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ?
-            screen.height : window.innerHeight : window.innerHeight;
-        if (isIOS) {
-            wWidth = screen.width;
-            wHeight = screen.height;
-        }
+        //screen.width screen.height  bug !!!
+        // var wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width :
+        //     window.innerWidth : window.innerWidth;
+        // var wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ?
+        //     screen.height : window.innerHeight : window.innerHeight;
+        var wWidth = window.innerWidth;
+        var wHeight = window.innerHeight;
+        // if (isIOS) {
+        //     wWidth = screen.width;
+        //     wHeight = screen.height;
+        // }
         if (wWidth > wHeight) {
             wHeight = wWidth;
         }
@@ -120,7 +126,7 @@ window.h5 = {
                 clearTimeout(timeout);
                 interval = null;
                 timeout = null;
-                that.rootResize1();
+                that.rootResize2();
             };
             interval = setInterval(function() {
                 if (window.innerWidth === lastInnerWidth && window.innerHeight === lastInnerHeight) {
