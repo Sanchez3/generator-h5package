@@ -24,6 +24,15 @@ var Bar2 = require('./entities/Bar2');
 
 
 window.h5 = {
+    isPc: function() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+    },
     rootResize2: function() {
         //orientation landscape width=1334px
         var wFsize;
