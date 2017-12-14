@@ -1,6 +1,6 @@
 {
   "name": "generator-h5package",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A Yeoman generator to generate html5 projects base on webpack",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "yosay": "^2.0.0"
   },
   "devDependencies": {
-    "fs-extra": "^4.0.0",
+    "fs-extra": "^5.0.0",
     "gulp-concat": "^2.6.1",
     "mocha": "^4.0.1",
     "yeoman-assert": "^3.0.0",
