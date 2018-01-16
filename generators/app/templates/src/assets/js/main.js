@@ -26,7 +26,7 @@ var Bar2 = require('../entities/Bar2');
 window.h5 = {
     isPc: function() {
         var userAgentInfo = navigator.userAgent;
-        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var Agents = new Array('Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod');
         var flag = true;
         for (var v = 0; v < Agents.length; v++) {
             if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
@@ -62,7 +62,7 @@ window.h5 = {
         var noChangeCountToEnd = 100,
             noEndTimeout = 1000;
         that.rootResize();
-        window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', function() {
             var interval,
                 timeout,
                 end,
