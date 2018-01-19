@@ -44,9 +44,10 @@ window.h5 = {
         var wWidth = window.innerWidth;
         var wHeight = window.innerHeight;
         if (wWidth > wHeight) {
-            wHeight = wWidth;
+            wFsize = wHeight / 750 * 100;
+        } else {
+            wFsize = wWidth / 750 * 100;
         }
-        wFsize = wHeight / 7.5;
         document.getElementsByTagName('html')[0].style.fontSize = wFsize + 'px';
     },
     eventInit: function() {
