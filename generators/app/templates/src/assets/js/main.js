@@ -98,11 +98,16 @@ window.h5 = {
         });
 
         return that;
+    },
+    init: function() {
+        var that = this;
+        that.cssInit().eventInit();
     }
 };
 
 window.onload = function() {
-    window.h5.cssInit().eventInit();
+    window.h5.init();
+    // showStats();
 };
 
 
@@ -126,4 +131,3 @@ function showStats() {
     }
     requestAnimationFrame(animate);
 }
-// showStats();
