@@ -162,6 +162,8 @@ The release in  `dist/`
 - [howler.js](https://howlerjs.com/) for audio
 - [Gsap](https://greensock.com/gsap) for javascript animation
 - [animate.css](https://daneden.github.io/animate.css/) for CSS animation style
+- [ajax](https://github.com/fdaciuk/ajax)  for ajax
+- ~~jQuery~~ [You-Dont-Need-jQuery](https://github.com/nefe/You-Dont-Need-jQuery) 
 
 ####others:
 
@@ -176,7 +178,7 @@ The release in  `dist/`
 
   ```javascript
   entry: {
-    vendor: ["jquery", "other-lib"],
+    vendor: ["howler", "other-lib"],
     main: path.resolve(__dirname, "src/assets/js/main.js")
   },
   plugins: [
@@ -184,7 +186,6 @@ The release in  `dist/`
       name: "vendor",
       // filename: "vendor.js"
       // (Give the chunk a different name)
-
       minChunks: Infinity,
       // (with more entries, this ensures that no other module
       //  goes into the vendor chunk)
