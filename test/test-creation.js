@@ -7,7 +7,7 @@ const path = require('path');
 
 const basedir = path.join(__dirname, '../generators/app');
 
-describe('yo phaser-h5', () => {
+describe('yo:h5package', () => {
 
     let tmpdir;
 
