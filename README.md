@@ -140,7 +140,7 @@ The release in  `dist/`
 
 通过npm管理插件，devDependencies 里面的插件只用于开发环境，不用于生产环境，而 dependencies 是需要发布到生产环境的。
 
-####devDependencies:
+#### devDependencies:
 
 *Note: npm install <packages> --save-dev*
 
@@ -155,7 +155,7 @@ The release in  `dist/`
 - [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers
 
 
-####dependencies:
+#### dependencies:
 
 *Note: npm install <packages>*
 
@@ -165,7 +165,7 @@ The release in  `dist/`
 - [ajax](https://github.com/fdaciuk/ajax)  for ajax
 - ~~jQuery~~ [You-Dont-Need-jQuery](https://github.com/nefe/You-Dont-Need-jQuery) 
 
-####others:
+#### others:
 
 *Note: Read Documentation For a Getting started guide, Usage , API docs, etc. check out or docs!*
 
@@ -200,7 +200,7 @@ The release in  `dist/`
   ​
 
 
-###生产环境构建 / Production
+### 生产环境构建 / Production
 
 ***
 
