@@ -1,4 +1,4 @@
-# 基于Webpack的前端h5项目生成器
+#generator-h5package
 
 <div align="left">
     <div>
@@ -10,33 +10,23 @@
     </div>
 </div>
 
-前端项目工程化，使用`Webpack+ Native Js` 方式开发项目，之前写过一个[基于gulp的前端h5项目生成器](https://github.com/Sanchez3/generator-phaser-h5)
+**Translations: [简体中文](https://github.com/Sanchez3/generator-h5package/blob/master/README.zh-CN.md)**
 
-
+`generator-h5package` is a [Yeoman](http://yeoman.io/) plugin that uses `Webpack+ Native Js` to make starting up Web projects simple, quick and easy, the same as [`generator-phaser-h5`](https://github.com/Sanchez3/generator-phaser-h5)
 
 ## WHY
 
-​[Gulp](https://gulpjs.com/) 只是个基于流的构建工具，优化前端工作流程，比如监控、压缩js、css、编译Sass等等。
+[gulp](https://gulpjs.com/) is a toolkit for automating painful or time-consuming tasks in your development workflow, including watch, uglify Js, optimize Css, etc.
 
-​[Webpack](https://webpack.js.org/) 则是个模块化管理的工具，能够完成Gulp所实现的绝大多数功能，也能通过`webpack stream`将Webpack整合到Gulp中。
+[webpack](https://webpack.js.org/) is a static module bundler for modern JavaScript applications, do pretty much the same job as *gulp*. Also, use `webpack stream` to run *webpack* as a stream to conveniently integrate with *gulp*.
 
->Note: Gulp部分功能目前是强于Webpack，例如雪碧图。
->
->不过Webpack在模块化方案更为优秀。随着项目庞大，项目会分工分块开发，所有script模块/脚本都需要引入到网页中，大量外部文件会使得网页承担多个HTTP请求带来的开销，影响HTML的响应速度。
-
-​此外，Webpack与[browserify](https://github.com/substack/node-browserify)，[RequireJS](http://requirejs.org/)相比，吸取了大量已有方案的优点与教训，也解决了很多前端开发过程中已存在的痛点，如代码的拆分与异步加载、对非 JavaScript 资源的支持等。当然另外两个打包工具也有可圈可点之处。
-
-> Note: RequireJS  的模块规范 AMD 并不兼容 JS 未来的模块化方案。
-
-​目前webpack与越来越多的框架相容，也可以通过npm添加你所需要的前端框架以及插件 `eg. React, Angular, Vue AND JQuery, gsap, animate.css, howler, etc. `
-
-
+In [browserify](https://github.com/substack/node-browserify), you use *gulp/grunt* and a long list of transforms and plugins to get the job done. *Webpack* offers enough power out of the box that you typically don’t need `Grunt` or `Gulp` at all.`
 
 
 
 ## HOW 
 
-### 安装 / Install
+### Install
 
 ***
 
@@ -54,7 +44,7 @@
 
 
 
-### 使用 / Usage
+### Usage
 
 ***
 
@@ -84,13 +74,11 @@ The release in  `dist/`
 
 
 
-### 文档结构 / Directory Structure
+### Directory Structure
 
 ***
 
-
-
-**开发时目录结构 npm run start**
+**In development, run `npm run start`:**
 
 ```
     .
@@ -114,7 +102,7 @@ The release in  `dist/`
     └── webpack.prod.js        #"production"
 ```
 
-**打包后目录结构 npm run build**
+**In production, run `npm run build`:**
 
 ```
    dist
@@ -132,13 +120,15 @@ The release in  `dist/`
 
 
 
-### 插件 / Plugins
+### Plugins
 
 ***
 
+[npm](https://www.npmjs.com/) manages plugins.
 
+`devDependencies` are for the development-related scripts, e.g. unit testing, packaging scripts, documentation generation, etc.
 
-通过npm管理插件，devDependencies 里面的插件只用于开发环境，不用于生产环境，而 dependencies 是需要发布到生产环境的。
+`dependencies` are required for production use, and assumed required for dev as well.
 
 #### devDependencies:
 
@@ -200,12 +190,14 @@ The release in  `dist/`
   ​
 
 
-### 生产环境构建 / Production
+### Production
 
 ***
 
 **webpack.common.js** (Don't repeat yourself - DRY)
-”通用“配置
+
+"common" configuration
+
 - `entry`
 - `ouput`
 - `module(babel-loader, css-loader, sass-loader, url-loader)`
@@ -213,14 +205,14 @@ The release in  `dist/`
 
 **webpack.dev.js** (development)
 
-”开发“配置
+"development" configuration
 
 - `devtool`
 - `devServer`
 
 **webpack.prod.js** (production)
 
-”生产“配置
+"production" configuration
 
 - `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
 
@@ -229,18 +221,19 @@ The release in  `dist/`
 
 ## WHAT
 
-### 版本 / Versions
+### Versions
 
-#### 1.x.x 正式发布 
+#### 1.x.x Inital Publish 
 
 - **1.2.x Add `uglifyjs-webpack-plugin`**
 - **1.3.x Add `CommonsChunkPlugin`**
 - **1.4.x Add `url-loader`**
 
-#### 2.x.x 分离开发和生产环境 
+#### 2.x.x Separate webpack configurations for each environment. 
+
 - **2.0.x add `webpack-merge`**
 
-### 参考
+### Reference
 
 [gulp & webpack整合，鱼与熊掌我都要！](http://www.jianshu.com/p/9724c47b406c)
 
