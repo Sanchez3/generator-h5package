@@ -20,7 +20,7 @@
 
 [webpack](https://webpack.js.org/) is a static module bundler for modern JavaScript applications, do pretty much the same job as *gulp*. Also, use `webpack stream` to run *webpack* as a stream to conveniently integrate with *gulp*.
 
-In [browserify](https://github.com/substack/node-browserify), you use *gulp/grunt* and a long list of transforms and plugins to get the job done. *Webpack* offers enough power out of the box that you typically don’t need `Grunt` or `Gulp` at all.`
+In [browserify](https://github.com/substack/node-browserify), you use *gulp/grunt* and a long list of transforms and plugins to get the job done. *webpack* offers enough power out of the box that you typically don’t need `Grunt` or `Gulp` at all.`
 
 
 
@@ -232,6 +232,8 @@ The release in  `dist/`
 #### 2.x.x Separate webpack configurations for each environment. 
 
 - **2.0.x add `webpack-merge`**
+
+
 
 ### Reference
 
