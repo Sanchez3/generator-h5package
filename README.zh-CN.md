@@ -239,6 +239,7 @@ The release in  `dist/`
 
 #### 2.x.x 分离开发和生产环境 
 - **2.0.x add `webpack-merge`**
+- **2.1.x Add Add Doc Translations**
 
 ### 参考
 
