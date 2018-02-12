@@ -20,7 +20,7 @@
 
 [webpack](https://webpack.js.org/) is a static module bundler for modern JavaScript applications, do pretty much the same job as *gulp*. Also, use `webpack stream` to run *webpack* as a stream to conveniently integrate with *gulp*.
 
-In [browserify](https://github.com/substack/node-browserify), you use *gulp/grunt* and a long list of transforms and plugins to get the job done. *webpack* offers enough power out of the box that you typically don’t need `Grunt` or `Gulp` at all.`
+In [browserify](https://github.com/substack/node-browserify), you use *gulp/grunt* and a long list of transforms and plugins to get the job done. *webpack* offers enough power out of the box that you typically don’t need `Grunt` or `Gulp` at all.
 
 
 
@@ -66,8 +66,8 @@ In [browserify](https://github.com/substack/node-browserify), you use *gulp/grun
 3. **Launch it!**
 
    ```sh
-   npm run start    #Launches the server and opens the page for live development.
-   npm run build    #Prepare the h5 release for distribution.
+   npm run start    # Launches the server and opens the page for live development.
+   npm run build    # Prepare the h5 release for distribution.
    ```
 
 The release in  `dist/`
@@ -80,13 +80,13 @@ The release in  `dist/`
 
 **In development, run `npm run start`:**
 
-```
+```sh
     .
     ├── dist
     ├── src
     │   └── assets
     │       ├── img
-    │       ├── media         #video audio resources
+    │       ├── media         # video audio resources
     │       ├── css
     │       │   ├── css.css
     │       │   └── sass.scss
@@ -97,14 +97,14 @@ The release in  `dist/`
     ├── node_modules
     ├── index.html
     ├── package.json
-    ├── webpack.common.js      #"common" configuration
-    ├── webpack.dev.js         #"development"
-    └── webpack.prod.js        #"production"
+    ├── webpack.common.js      # "common" configuration
+    ├── webpack.dev.js         # "development"
+    └── webpack.prod.js        # "production"
 ```
 
 **In production, run `npm run build`:**
 
-```
+```sh
    dist
     ├── assets
     │   ├── img

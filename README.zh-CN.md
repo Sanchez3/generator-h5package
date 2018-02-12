@@ -76,8 +76,8 @@
 3. **Launch it!**
 
    ```sh
-   npm run start    #Launches the server and opens the page for live development.
-   npm run build    #Prepare the h5 release for distribution.
+   npm run start    # Launches the server and opens the page for live development.
+   npm run build    # Prepare the h5 release for distribution.
    ```
 
 The release in  `dist/`
@@ -92,13 +92,13 @@ The release in  `dist/`
 
 **开发时目录结构 npm run start**
 
-```
+```sh
     .
     ├── dist
     ├── src
     │   └── assets
     │       ├── img
-    │       ├── media         #video audio resources
+    │       ├── media         # video audio resources
     │       ├── css
     │       │   ├── css.css
     │       │   └── sass.scss
@@ -109,14 +109,14 @@ The release in  `dist/`
     ├── node_modules
     ├── index.html
     ├── package.json
-    ├── webpack.common.js      #"common" configuration
-    ├── webpack.dev.js         #"development"
-    └── webpack.prod.js        #"production"
+    ├── webpack.common.js      # "common" configuration
+    ├── webpack.dev.js         # "development"
+    └── webpack.prod.js        # "production"
 ```
 
 **打包后目录结构 npm run build**
 
-```
+```sh
    dist
     ├── assets
     │   ├── img
