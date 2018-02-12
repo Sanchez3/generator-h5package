@@ -231,8 +231,8 @@ The release in  `dist/`
 
 #### 2.x.x Separate webpack configurations for each environment. 
 
-- **2.0.x add `webpack-merge`**
-
+- **2.0.x Add `webpack-merge`**
+- **2.1.x Add Add Doc Translations**
 
 
 ### Reference
