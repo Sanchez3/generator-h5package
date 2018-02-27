@@ -12,6 +12,10 @@
 
 **Translations: [简体中文](https://github.com/Sanchez3/generator-h5package/blob/master/README.zh-CN.md)**
 
+> Note: Webpack 4.0 Release. Convention over Configuration!!! 
+>
+> Maybe Rebuilding this Plugin, Testing.
+
 `generator-h5package` is a [Yeoman](http://yeoman.io/) plugin that uses `Webpack+ Native Js` to make starting up Web projects simple, quick and easy, the same as [`generator-phaser-h5`](https://github.com/Sanchez3/generator-phaser-h5)
 
 ## WHY

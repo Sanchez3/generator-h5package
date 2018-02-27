@@ -10,6 +10,10 @@
     </div>
 </div>
 
+> Note: Webpack 4.0 正式发布。约定优于配置！！！
+>
+> 我可能会重构这个generator，待定。
+
 前端项目工程化，使用`Webpack+ Native Js` 方式开发项目，之前写过一个[基于gulp的前端h5项目生成器](https://github.com/Sanchez3/generator-phaser-h5)
 
 
