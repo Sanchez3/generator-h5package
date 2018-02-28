@@ -6,6 +6,7 @@
         <a href="https://travis-ci.org/Sanchez3/generator-h5package"><img alt="Travis CI Build Status" src="https://travis-ci.org/Sanchez3/generator-h5package.svg?branch=master"></a>
         <a href="https://david-dm.org/Sanchez3/generator-h5package"><img alt="dependencies status" src="https://david-dm.org/Sanchez3/generator-h5package/status.svg"></a>
         <a href="https://david-dm.org/Sanchez3/generator-h5package?type=dev"><img alt="devDependencies status" src="https://david-dm.org/Sanchez3/generator-h5package/dev-status.svg"/></a>
+        <a href="https://codecov.io/gh/Sanchez3/generator-h5package"><img src="https://codecov.io/gh/Sanchez3/generator-h5package/branch/master/graph/badge.svg" /></a>
         <a href="https://www.npmjs.com/package/generator-h5package"><img alt="Downloads" src="https://img.shields.io/npm/dm/generator-h5package.svg"></a>
     </div>
 </div>
