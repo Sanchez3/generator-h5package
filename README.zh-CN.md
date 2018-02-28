@@ -11,6 +11,8 @@
     </div>
 </div>
 
+**Translations: [English](https://github.com/Sanchez3/generator-h5package/blob/master/README.md)**
+
 > Note: Webpack 4.0 正式发布。约定优于配置！！！
 >
 > 我可能会重构这个generator，待定。
