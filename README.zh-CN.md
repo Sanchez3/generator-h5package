@@ -222,7 +222,7 @@ The release in  `dist/`
 
 ”开发“配置
 
-- `devtool`
+- `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
 - `devServer`
 
 **webpack.prod.js** (production)
@@ -230,8 +230,7 @@ The release in  `dist/`
 ”生产“配置
 
 - `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
-
-
+- `devtool:none` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
 
 
 ## WHAT
@@ -247,6 +246,7 @@ The release in  `dist/`
 #### 2.x.x 分离开发和生产环境 
 - **2.0.x add `webpack-merge`**
 - **2.1.x Add Add Doc Translations**
+- **2.2.x Reset `devtool`**
 
 ### 参考
 

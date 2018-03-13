@@ -212,7 +212,7 @@ The release in  `dist/`
 
 "development" configuration
 
-- `devtool`
+- `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
 - `devServer`
 
 **webpack.prod.js** (production)
@@ -220,8 +220,7 @@ The release in  `dist/`
 "production" configuration
 
 - `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
-
-
+- `devtool:none` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
 
 
 ## WHAT
@@ -238,6 +237,7 @@ The release in  `dist/`
 
 - **2.0.x Add `webpack-merge`**
 - **2.1.x Add Add Doc Translations**
+- **2.2.x Reset `devtool`**
 
 
 ### Reference
