@@ -1,15 +1,9 @@
-/**
- * Created by Sanchez
- */
-
 'use strict';
 
-function Bar2() {
-}
+function Bar2() {}
 
 
-Bar2.prototype = {
-};
+Bar2.prototype = {};
 
 
 module.exports = Bar2;
