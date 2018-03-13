@@ -7,7 +7,7 @@ module.exports = merge(common, {
     output: {
         publicPath: '/'
     },
-    devtool: 'inline-source-map',
+    devtool: 'eval',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         port: 9000,
