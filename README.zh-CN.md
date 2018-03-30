@@ -115,6 +115,8 @@ The release in  `dist/`
     │   
     ├── node_modules
     ├── index.html
+    ├── LICENSE
+    ├── README.md
     ├── package.json
     ├── webpack.common.js      # "common" configuration
     ├── webpack.dev.js         # "development"
@@ -247,6 +249,8 @@ The release in  `dist/`
 - **2.0.x add `webpack-merge`**
 - **2.1.x Add Add Doc Translations**
 - **2.2.x Reset `devtool`**
+
+#### 3.x.x 重构生成器，修改测试用例
 
 ### 参考
 
