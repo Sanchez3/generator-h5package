@@ -23,18 +23,19 @@ module.exports = class extends Generator {
             {
                 type: 'input',
                 name: 'projectDesc',
-                message: 'What\'s the description of your application:'
+                message: 'What\'s the description of your application(optional):'
             },
             {
                 type: 'list',
                 name: 'projectLicense',
                 message: 'Please choose license:',
-                choices: ['MIT', 'ISC', 'Apache-2.0', 'AGPL-3.0']
+                choices: ['MIT', 'Apache-2.0', 'GPL-3.0', 'Others'],
+                default: 'MIT'
             }
         ]).then(answers => {
-            this.projectName = answers.projectName ? answers.projectName : ' ';
-            this.projectDesc = answers.projectDesc ? answers.projectDesc : ' ';
-            this.projectLicense = answers.projectLicense || 'MIT';
+            this.projectName = answers.projectName ? answers.projectName : foldername;
+            this.projectDesc = answers.projectDesc ? answers.projectDesc : '';
+            this.projectLicense = answers.projectLicense ? (answers.projectLicense === 'Others' ? '' : answers.projectLicense) : 'MIT';
         });
     }
     configuring() {
@@ -48,17 +49,22 @@ module.exports = class extends Generator {
             this.destinationPath('src/index.html'),
             this
         );
+        this.fs.copyTpl(
+            this.templatePath('README.md'),
+            this.destinationPath('README.md'),
+            this
+        );
         this.fs.copy(
             this.templatePath('src/assets/**'),
             this.destinationPath('src/assets/'),
             this
         );
-        mkdirp('src/assets/media');
         this.fs.copyTpl(
             this.templatePath('_package.json'),
             this.destinationPath('package.json'),
             this
         );
+        mkdirp('src/assets/media');
         this.fs.copy(
             this.templatePath('_webpack.common.js'),
             this.destinationPath('webpack.common.js'),
@@ -74,6 +80,38 @@ module.exports = class extends Generator {
             this.destinationPath('webpack.prod.js'),
             this
         );
+        switch (this.projectLicense) {
+            case 'MIT':
+                this.fs.copy(
+                    this.templatePath('LICENSE_MIT'),
+                    this.destinationPath('LICENSE'),
+                    this
+                );
+                break;
+            case 'Apache-2.0':
+                this.fs.copy(
+                    this.templatePath('LICENSE_APACHE'),
+                    this.destinationPath('LICENSE'),
+                    this
+                );
+                break;
+            case 'GPL-3.0':
+                this.fs.copy(
+                    this.templatePath('LICENSE_GPL'),
+                    this.destinationPath('LICENSE'),
+                    this
+                );
+                break;
+            case 'Others':
+                this.fs.write(this.destinationPath('LICENSE'), '')
+                break;
+            default:
+                this.fs.copy(
+                    this.templatePath('LICENSE_MIT'),
+                    this.destinationPath('LICENSE'),
+                    this
+                );
+        }
 
     }
     install() { //安装依赖
