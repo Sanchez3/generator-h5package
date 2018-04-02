@@ -241,7 +241,7 @@ The release in  `dist/`
 - **2.1.x Add Add Doc Translations**
 - **2.2.x Reset `devtool`**
 
-### 3.x.x Refactor Generator , Fix tests
+#### 3.x.x Refactor Generator , Fix tests
 
 ### Reference
 
