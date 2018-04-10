@@ -251,6 +251,7 @@ The release in  `dist/`
 - **2.2.x Reset `devtool`**
 
 #### 3.x.x 重构生成器，修改测试用例
+- **3.1.x Output Using [chunkhash]**
 
 ### 参考
 

@@ -243,6 +243,8 @@ The release in  `dist/`
 
 #### 3.x.x Refactor Generator , Fix tests
 
+- **3.1.x Output Using [chunkhash]**
+
 ### Reference
 
 [gulp & webpack整合，鱼与熊掌我都要！](http://www.jianshu.com/p/9724c47b406c)
