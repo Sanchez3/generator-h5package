@@ -3,8 +3,8 @@ var path = require('path');
 var CleanWebpackPlugin = require("clean-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.min.css');
-var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.min.css');
+var extractCSS = new ExtractTextPlugin('assets/css/css-[chunkhash].min.css');
+var extractSASS = new ExtractTextPlugin('assets/css/sass-[chunkhash].min.css');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/[name].min.js',
+        filename: 'assets/js/[name]-[chunkhash].min.js',
     },
     module: {
         rules: [{
