@@ -1,20 +1,33 @@
-var webpack = require('webpack');
-var path = require('path');
-var CleanWebpackPlugin = require("clean-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('assets/css/css-[chunkhash].min.css');
-var extractSASS = new ExtractTextPlugin('assets/css/sass-[chunkhash].min.css');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { HashedModuleIdsPlugin } = require('webpack');
 
 module.exports = {
     entry: {
-        vendor: ['howler'],
         main: path.resolve(__dirname, "src/assets/js/main.js")
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/[name]-[chunkhash].min.js',
+        filename: 'assets/js/[name].[chunkhash].min.js',
+        chunkFilename: 'assets/js/[name].[chunkhash].bundle.js'
+    },
+    optimization: {
+        runtimeChunk: {
+            name: 'manifest'
+        },
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /node_modules\/(.*)\.js/,
+                    name: 'vendor',
+                    chunks: "all"
+                }
+            }
+        }
     },
     module: {
         rules: [{
@@ -28,13 +41,8 @@ module.exports = {
             exclude: /node_modules/,
             include: '/src/'
         }, {
-            test: /\.css$/,
-            include: /src/,
-            use: extractCSS.extract('css-loader')
-
-        }, {
-            test: /(\.scss|\.sass)$/,
-            use: extractSASS.extract(['css-loader', 'sass-loader'])
+            test: /(\.css|\.scss|\.sass)$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
         }, {
             test: /\.html$/,
             use: {
@@ -71,6 +79,7 @@ module.exports = {
     },
     plugins: [
         //清空dist
+        new HashedModuleIdsPlugin(),
         new CleanWebpackPlugin(["dist"], {
             root: '',
             verbose: true,
@@ -84,16 +93,14 @@ module.exports = {
         //     from: path.resolve(__dirname, "src/assets/media"),
         //     to: path.resolve(__dirname, "dist/assets/media")
         // }]),
-        extractCSS,
-        extractSASS,
-        new webpack.optimize.CommonsChunkPlugin({
-            names: "vendor",
-            minChunks: Infinity,
+        new MiniCssExtractPlugin({
+            filename: 'assets/css/[name].[chunkhash].min.css',
+            chunkFilename: 'assets/css/[name].[chunkhash].css'
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             inject: 'body',
-            hash: true,
+            hash: false,
             minify: {
                 removeComments: true,
                 collapseWhitespace: true
