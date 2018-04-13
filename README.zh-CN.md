@@ -13,9 +13,11 @@
 
 **Translations: [English](https://github.com/Sanchez3/generator-h5package/blob/master/README.md)**
 
-> Note: Webpack 4.0 正式发布。约定优于配置！！！
+> Note: Webpack 4 正式发布。约定优于配置！！！
 >
-> 我可能会重构这个generator，待定。
+> `generator-h5package v4.0.0` 支持 `webpack 4`
+>
+> `generator-h5package < v4.0.0` 支持 `webpack 3`
 
 前端项目工程化，使用`Webpack+ Native Js` 方式开发项目，之前写过一个[基于gulp的前端h5项目生成器](https://github.com/Sanchez3/generator-phaser-h5)
 
@@ -252,6 +254,10 @@ The release in  `dist/`
 
 #### 3.x.x 重构生成器，修改测试用例
 - **3.1.x Output Using [chunkhash]**
+
+#### 4.x.x 支持 `webpack 4.0`
+
+
 
 ### 参考
 
