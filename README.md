@@ -13,9 +13,11 @@
 
 **Translations: [简体中文](https://github.com/Sanchez3/generator-h5package/blob/master/README.zh-CN.md)**
 
-> Note: Webpack 4.0 Release. Convention over Configuration!!! 
+> Note: `webpack 4.0` Release. Convention over Configuration!!! 
 >
-> Maybe Rebuilding this Plugin, Testing.
+> Aliasing `v4.0.0` as `generator-h5package` is scheduled for `webpack v4.0.0`
+>
+> `generator-h5package < v4.0.0`  is for `webpack v3.0.0`
 
 `generator-h5package` is a [Yeoman](http://yeoman.io/) plugin that uses `Webpack+ Native Js` to make starting up Web projects simple, quick and easy, the same as [`generator-phaser-h5`](https://github.com/Sanchez3/generator-phaser-h5)
 
@@ -242,6 +244,15 @@ The release in  `dist/`
 - **2.2.x Reset `devtool`**
 
 #### 3.x.x Refactor Generator , Fix tests
+
+- **3.1.x Output Using [chunkhash]**
+
+#### 4.x.x Refactor Generator for `webpack 4`
+
+
+
+
+
 
 ### Reference
 
