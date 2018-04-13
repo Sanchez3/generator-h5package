@@ -175,22 +175,7 @@ The release in  `dist/`
 
 - Local In `webpack.common.js` Write entry vendor, Split your code into `vendor.js` and `main.js`:
 
-  ```javascript
-  entry: {
-    vendor: ["howler", "other-lib"],
-    main: path.resolve(__dirname, "src/assets/js/main.js")
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      // filename: "vendor.js"
-      // (Give the chunk a different name)
-      minChunks: Infinity,
-      // (with more entries, this ensures that no other module
-      //  goes into the vendor chunk)
-    })
-  ]
-  ```
+  - remove `CommonsChunkPlugin`, add `optimization.splitChunks` and `optimization.runtimeChunk`
 
 - Use `require(file)` or `import "module-name"` in `main.js`
 
@@ -210,7 +195,7 @@ The release in  `dist/`
 - `entry`
 - `ouput`
 - `module(babel-loader, css-loader, sass-loader, url-loader)`
-- `plugins(CleanWebpackPlugin, ExtractTextPlugin,CommonsChunkPlugin,HtmlWebpackPlugin)`
+- `plugins(CleanWebpackPlugin,HtmlWebpackPlugin)`
 
 **webpack.dev.js** (development)
 
@@ -224,7 +209,7 @@ The release in  `dist/`
 "production" configuration
 
 - `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
-- `devtool:none` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
+- `devtool:source-map` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
 
 
 ## WHAT
