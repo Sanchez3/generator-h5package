@@ -4,10 +4,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-    mode:'development',
-    output: {
-        publicPath: '/'
-    },
+    mode: 'development',
     devtool: 'eval',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),

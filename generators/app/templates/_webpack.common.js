@@ -12,8 +12,9 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/[name].[chunkhash].min.js',
-        chunkFilename: 'assets/js/[name].[chunkhash].bundle.js'
+        publicPath: "/",
+        filename: 'assets/js/[name].[chunkhash].js',
+        chunkFilename: 'assets/js/[name].[chunkhash].js'
     },
     optimization: {
         runtimeChunk: {
