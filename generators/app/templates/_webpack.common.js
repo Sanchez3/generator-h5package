@@ -45,16 +45,6 @@ module.exports = {
             test: /(\.css|\.scss|\.sass)$/,
             use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
         }, {
-            test: /\.html$/,
-            use: {
-                loader: 'html-loader',
-                options: {
-                    minimize: true,
-                    removeComments: false,
-                    collapseWhitespace: false
-                }
-            }
-        }, {
             test: /\.(gif|jpg|png|ico)\??.*$/,
             use: {
                 loader: 'url-loader',
@@ -74,6 +64,16 @@ module.exports = {
                     name: '[name].[ext]',
                     publicPath: '../../',
                     outputPath: 'assets/css/'
+                }
+            }
+        }, {
+            test: /\.html$/,
+            use: {
+                loader: 'html-loader',
+                options: {
+                    minimize: true,
+                    removeComments: false,
+                    collapseWhitespace: false
                 }
             }
         }]
