@@ -15,7 +15,7 @@
 
 > Note: Webpack 4 正式发布。约定优于配置！！！
 >
-> `generator-h5package v4.0.0` 支持 `webpack 4`
+> `generator-h5package v4.0.0` 支持 `webpack 4` 
 >
 > `generator-h5package < v4.0.0` 支持 `webpack 3`
 
@@ -105,6 +105,7 @@ The release in  `dist/`
     .
     ├── dist
     ├── src
+    │   ├── index.html
     │   └── assets
     │       ├── img
     │       ├── media         # video audio resources
@@ -116,7 +117,6 @@ The release in  `dist/`
     │           └── main.js
     │   
     ├── node_modules
-    ├── index.html
     ├── LICENSE
     ├── README.md
     ├── package.json
@@ -133,10 +133,9 @@ The release in  `dist/`
     │   ├── img
     │   ├── media
     │   ├── css
-    │   │   ├── css.min.css
-    │   │   └── sass.min.css
+    │   │   └── main.[chunkhash].min.css
     │   └── js
-    │       └── main.min.js
+    │       └── main.[chunkhash].min.js
     │
     └── index.html
 ```
@@ -158,12 +157,13 @@ The release in  `dist/`
 - webpack-plugins
 
   - [sass-loader](https://www.npmjs.com/package/sass-loader)  loads a SASS/SCSS file and compiles it to CSS
-  - [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin) Extract text from a bundle, or bundles, into a separate file
-  - [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin) optimize \ minimize CSS assets
-  - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles
-  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), [commons-chunk-plugin](https://webpack.js.org/plugins/commons-chunk-plugin), [uglifyjs-webpack-plugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/), etc.
+  - [MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin) extracts CSS into separate files.
+  - [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin) optimizes \ minimizes CSS assets.
+  - [uglifyjs-webpack-plugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/) uses [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony)[(`uglify-es`)](https://npmjs.com/package/uglify-es) to minify your JavaScript. 
+  - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles.
+  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), ~~[commons-chunk-plugin](https://webpack.js.org/plugins/commons-chunk-plugin)~~, etc.
 
-- [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers
+- [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers.
 
 
 #### dependencies:
@@ -180,12 +180,12 @@ The release in  `dist/`
 
 *Note: Read Documentation For a Getting started guide, Usage , API docs, etc. check out or docs!*
 
-- [slick](http://kenwheeler.github.io/slick/) for slider
+- [slick](http://kenwheeler.github.io/slick/) or [swiper](http://idangero.us/swiper/) for slider
 - [Stats](https://github.com/mrdoob/stats.js) for JavaScript Performance Monitor
 
 **Use the following ways Sometime:**
 
-- Local In `webpack.common.js` Write entry vendor, Split your code into `vendor.js` and `main.js`:
+- Local In `webpack.common.js` Split your code into `vendor.js` and `main.js`:
 
   - 删除`CommonsChunkPlugin`，改为用 `optimization.splitChunks` 和 `optimization.runtimeChunk`
 
@@ -204,14 +204,15 @@ The release in  `dist/`
 ”通用“配置
 - `entry`
 - `ouput`
-- `module(babel-loader, css-loader, sass-loader, url-loader)`
-- `plugins(CleanWebpackPlugin,HtmlWebpackPlugin)`
+- `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader)`
+- `optimization(runtimeChunk, splitChunk)`
+- `plugins(HashedModuleIdsPlugin, CleanWebpackPlugin, MiniCssExtractPlugin, HtmlWebpackPlugin)`
 
 **webpack.dev.js** (development)
 
 ”开发“配置
 
-- `devtool:source-map`  [more options](https://webpack.js.org/configuration/devtool/#development)
+- `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
 - `devServer`
 
 **webpack.prod.js** (production)
@@ -219,7 +220,7 @@ The release in  `dist/`
 ”生产“配置
 
 - `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
-- `devtool:none` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
+- `devtool:source-map` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
 
 
 ## WHAT
