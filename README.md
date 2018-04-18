@@ -173,13 +173,12 @@ The release in  `dist/`
 
 - Local In `webpack.common.js` Split your code into `vendor.js` and `main.js`:
 
-  - remove `CommonsChunkPlugin`, add `optimization.splitChunks` and `optimization.runtimeChunk`
+  - remove  `CommonsChunkPlugin`, add  `optimization.splitChunks`  and  `optimization.runtimeChunk`
 
 - Use `require(file)` or `import "module-name"` in `main.js`
 
 - Cdn [jsDelivr](http://www.jsdelivr.com/), [cdnjs](https://cdnjs.com/), [bootcdn](http://www.bootcdn.cn/) 
 
-  ​
 
 
 ### Production
@@ -190,25 +189,25 @@ The release in  `dist/`
 
 "common" configuration
 
-- `entry`
-- `ouput`
-- `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader)`
-- `optimization(runtimeChunk, splitChunk)`
-- `plugins(HashedModuleIdsPlugin, CleanWebpackPlugin, MiniCssExtractPlugin, HtmlWebpackPlugin)`
+-  `entry`
+-  `ouput`
+-  `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader)`
+-  `optimization(runtimeChunk, splitChunk)`
+-  `plugins(HashedModuleIdsPlugin, CleanWebpackPlugin, MiniCssExtractPlugin, HtmlWebpackPlugin)`
 
 **webpack.dev.js** (development)
 
 "development" configuration
 
-- `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
-- `devServer`
+-  `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
+-  `devServer`
 
 **webpack.prod.js** (production)
 
 "production" configuration
 
-- `optimization.minimizer(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
-- `devtool:source-map` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
+-  `optimization.minimizer(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)` 
+-  `devtool:source-map` Omit the  `devtool` option  [more options](https://webpack.js.org/configuration/devtool/#production)
 
 
 ## WHAT

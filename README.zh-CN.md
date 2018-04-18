@@ -205,7 +205,7 @@ The release in  `dist/`
 - `entry`
 - `ouput`
 - `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader)`
-- `optimization(runtimeChunk, splitChunk)`
+- `optimization(runtimeChunk, splitChunk)`
 - `plugins(HashedModuleIdsPlugin, CleanWebpackPlugin, MiniCssExtractPlugin, HtmlWebpackPlugin)`
 
 **webpack.dev.js** (development)
