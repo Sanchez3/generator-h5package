@@ -156,12 +156,12 @@ The release in  `dist/`
 
 - webpack-plugins
 
-  - [sass-loader](https://www.npmjs.com/package/sass-loader)  loads a SASS/SCSS file and compiles it to CSS
+  - [sass-loader](https://www.npmjs.com/package/sass-loader)  loads a SASS/SCSS file and compiles it to CSS.
   - [MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin) extracts CSS into separate files.
   - [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin) optimizes \ minimizes CSS assets.
   - [uglifyjs-webpack-plugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/) uses [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony)[(`uglify-es`)](https://npmjs.com/package/uglify-es) to minify your JavaScript. 
   - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles.
-  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), ~~[commons-chunk-plugin](https://webpack.js.org/plugins/commons-chunk-plugin)~~, etc.
+  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), [HashedModuleIdsPlugin](https://webpack.js.org/plugins/hashed-module-ids-plugin/), ~~[commons-chunk-plugin](https://webpack.js.org/plugins/commons-chunk-plugin)~~, etc.
 
 - [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers.
 
