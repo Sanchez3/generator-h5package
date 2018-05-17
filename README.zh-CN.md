@@ -165,6 +165,14 @@ The release in  `dist/`
 
 - [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers.
 
+- [Node-sass](https://www.npmjs.com/package/node-sass) provides binding for Node.js to [LibSass](https://github.com/sass/libsass)
+  > Note:Install from mirror in China
+  >
+  > ```Sh
+  > npm install -g mirror-config-china --registry=http://registry.npm.taobao.org
+  > npm install node-sass
+  > ```
+
 
 #### dependencies:
 
