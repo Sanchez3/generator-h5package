@@ -199,9 +199,7 @@ The release in  `dist/`
 
 -  `entry`
 -  `ouput`
--  `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader)`
--  `optimization(runtimeChunk, splitChunk)`
--  `plugins(HashedModuleIdsPlugin, CleanWebpackPlugin, MiniCssExtractPlugin, HtmlWebpackPlugin)`
+-  `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader, postcss-loader)`
 
 **webpack.dev.js** (development)
 
@@ -231,7 +229,7 @@ The release in  `dist/`
 #### 2.x.x Separate webpack configurations for each environment. 
 
 - **2.0.x Add `webpack-merge`**
-- **2.1.x Add Add Doc Translations**
+- **2.1.x Add Doc Translations**
 - **2.2.x Reset `devtool`**
 
 #### 3.x.x Refactor Generator , Fix tests
@@ -240,6 +238,8 @@ The release in  `dist/`
 
 #### 4.x.x Refactor Generator for `webpack 4`
 
+- **4.0.x For `webpack 4`**
+- **4.1.x Add `postcss-loader`** for `autoprefixer`
 
 
 ### Reference
