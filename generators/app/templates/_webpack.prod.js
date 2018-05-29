@@ -42,7 +42,6 @@ module.exports = merge(common, {
                 assetNameRegExp: /\.css$/,
                 cssProcessor: require('cssnano')({ zindex: false }),
                 cssProcessorOptions: {
-                    safe: true,
                     discardComments: { removeAll: true }
                 },
                 canPrint: false

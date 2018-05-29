@@ -43,7 +43,15 @@ module.exports = {
             include: '/src/'
         }, {
             test: /(\.css|\.scss|\.sass)$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', {
+                loader: 'postcss-loader',
+                options: {
+                    plugins: () => [require('autoprefixer')({
+                        'browsers': ['> 1%', 'last 2 versions']
+                    })]
+                }
+
+            }]
         }, {
             test: /\.(gif|jpg|png|ico)\??.*$/,
             use: {
@@ -86,14 +94,14 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        // new CopyWebpackPlugin([{
-        //     from: path.resolve(__dirname, "src/assets/img"),
-        //     to: path.resolve(__dirname, "dist/assets/img")
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, "src/assets/img"),
+            to: path.resolve(__dirname, "dist/assets/img")
 
-        // }, {
-        //     from: path.resolve(__dirname, "src/assets/media"),
-        //     to: path.resolve(__dirname, "dist/assets/media")
-        // }]),
+        }, {
+            from: path.resolve(__dirname, "src/assets/media"),
+            to: path.resolve(__dirname, "dist/assets/media")
+        }]),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].[chunkhash].min.css',
             chunkFilename: 'assets/css/[name].[chunkhash].css'

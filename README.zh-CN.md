@@ -212,7 +212,7 @@ The release in  `dist/`
 ”通用“配置
 - `entry`
 - `ouput`
-- `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader)`
+- `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader, postcss-loader)`
 - `optimization(runtimeChunk, splitChunk)`
 - `plugins(HashedModuleIdsPlugin, CleanWebpackPlugin, MiniCssExtractPlugin, HtmlWebpackPlugin)`
 
@@ -243,13 +243,15 @@ The release in  `dist/`
 
 #### 2.x.x 分离开发和生产环境 
 - **2.0.x add `webpack-merge`**
-- **2.1.x Add Add Doc Translations**
+- **2.1.x Add Doc Translations**
 - **2.2.x Reset `devtool`**
 
 #### 3.x.x 重构生成器，修改测试用例
 - **3.1.x Output Using [chunkhash]**
 
 #### 4.x.x 支持 `webpack 4.0`
+- **4.0.x For `webpack 4`**
+- **4.1.x Add `postcss-loader`** for `autoprefixer`
 
 
 
