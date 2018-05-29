@@ -15,9 +15,7 @@
 
 > Note: `webpack 4.0` Release. Convention over Configuration!!! 
 >
-> Aliasing `v4.0.0` as `generator-h5package` is scheduled for `webpack v4.0.0`
->
-> `generator-h5package < v4.0.0`  is for `webpack v3.0.0`
+> For webpack v3 please use `generator-h5package@3.1.0`. The `generator-h5package@4.0.0` version and above supports webpack v4.
 
 `generator-h5package` is a [Yeoman](http://yeoman.io/) plugin that uses `Webpack+ Native Js` to make starting up Web projects simple, quick and easy, the same as [`generator-phaser-h5`](https://github.com/Sanchez3/generator-phaser-h5)
 
@@ -91,6 +89,7 @@ The release in  `dist/`
     .
     ├── dist
     ├── src
+    │   ├── index.html
     │   └── assets
     │       ├── img
     │       ├── media         # video audio resources
@@ -102,7 +101,6 @@ The release in  `dist/`
     │           └── main.js
     │   
     ├── node_modules
-    ├── index.html
     ├── LICENSE
     ├── README.md
     ├── package.json
@@ -119,10 +117,9 @@ The release in  `dist/`
     │   ├── img
     │   ├── media
     │   ├── css
-    │   │   ├── css.min.css
-    │   │   └── sass.min.css
+    │   │   └── main.[chunkhash].min.css
     │   └── js
-    │       └── main.min.js
+    │       └── main.[chunkhash].min.js
     │
     └── index.html
 ```
@@ -145,13 +142,22 @@ The release in  `dist/`
 
 - webpack-plugins
 
-  - [sass-loader](https://www.npmjs.com/package/sass-loader)  loads a SASS/SCSS file and compiles it to CSS
-  - [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin) Extract text from a bundle, or bundles, into a separate file
-  - [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin) optimize \ minimize CSS assets
-  - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles
-  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), [commons-chunk-plugin](https://webpack.js.org/plugins/commons-chunk-plugin), [uglifyjs-webpack-plugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/), etc.
+  - [sass-loader](https://www.npmjs.com/package/sass-loader)  loads a SASS/SCSS file and compiles it to CSS.
+  - [MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin) extracts CSS into separate files.
+  - [optimize-css-assets-webpack-plugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin) optimize \ minimize CSS assets.
+  - [uglifyjs-webpack-plugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/) uses [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony)[(`uglify-es`)](https://npmjs.com/package/uglify-es) to minify your JavaScript. 
+  - [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin) simplifies creation of HTML files to serve your webpack bundles.
+  - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin), [copy-webpack-plugin](https://www.npmjs.com/package/copy-webpack-plugin), [HashedModuleIdsPlugin](https://webpack.js.org/plugins/hashed-module-ids-plugin/), ~~[commons-chunk-plugin](https://webpack.js.org/plugins/commons-chunk-plugin)~~, etc.
 
 - [Babel](https://babeljs.io/) for the latest version of JavaScript through syntax transformers
+
+- [Node-sass](https://www.npmjs.com/package/node-sass) provides binding for Node.js to [LibSass](https://github.com/sass/libsass)
+  > Note:Install from mirror in China
+  >
+  > ```Sh
+  > npm install -g mirror-config-china --registry=http://registry.npm.taobao.org
+  > npm install node-sass
+  > ```
 
 
 #### dependencies:
@@ -168,35 +174,19 @@ The release in  `dist/`
 
 *Note: Read Documentation For a Getting started guide, Usage , API docs, etc. check out or docs!*
 
-- [slick](http://kenwheeler.github.io/slick/) for slider
+- [slick](http://kenwheeler.github.io/slick/) or [swiper](http://idangero.us/swiper/) for slider
 - [Stats](https://github.com/mrdoob/stats.js) for JavaScript Performance Monitor
 
 **Use the following ways Sometime:**
 
-- Local In `webpack.common.js` Write entry vendor, Split your code into `vendor.js` and `main.js`:
+- Local In `webpack.common.js` Split your code into `vendor.js` and `main.js`:
 
-  ```javascript
-  entry: {
-    vendor: ["howler", "other-lib"],
-    main: path.resolve(__dirname, "src/assets/js/main.js")
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      // filename: "vendor.js"
-      // (Give the chunk a different name)
-      minChunks: Infinity,
-      // (with more entries, this ensures that no other module
-      //  goes into the vendor chunk)
-    })
-  ]
-  ```
+  - remove  `CommonsChunkPlugin`, add  `optimization.splitChunks`  and  `optimization.runtimeChunk`
 
 - Use `require(file)` or `import "module-name"` in `main.js`
 
 - Cdn [jsDelivr](http://www.jsdelivr.com/), [cdnjs](https://cdnjs.com/), [bootcdn](http://www.bootcdn.cn/) 
 
-  ​
 
 
 ### Production
@@ -207,24 +197,25 @@ The release in  `dist/`
 
 "common" configuration
 
-- `entry`
-- `ouput`
-- `module(babel-loader, css-loader, sass-loader, url-loader)`
-- `plugins(CleanWebpackPlugin, ExtractTextPlugin,CommonsChunkPlugin,HtmlWebpackPlugin)`
+-  `entry`
+-  `ouput`
+-  `module(babel-loader, css-loader, sass-loader, MiniCssExtractPlugin.loader, url-loader)`
+-  `optimization(runtimeChunk, splitChunk)`
+-  `plugins(HashedModuleIdsPlugin, CleanWebpackPlugin, MiniCssExtractPlugin, HtmlWebpackPlugin)`
 
 **webpack.dev.js** (development)
 
 "development" configuration
 
-- `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
-- `devServer`
+-  `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
+-  `devServer`
 
 **webpack.prod.js** (production)
 
 "production" configuration
 
-- `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
-- `devtool:none` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
+-  `optimization.minimizer(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)` 
+-  `devtool:source-map` Omit the  `devtool` option  [more options](https://webpack.js.org/configuration/devtool/#production)
 
 
 ## WHAT
@@ -248,9 +239,6 @@ The release in  `dist/`
 - **3.1.x Output Using [chunkhash]**
 
 #### 4.x.x Refactor Generator for `webpack 4`
-
-
-
 
 
 
