@@ -28,19 +28,24 @@ module.exports = merge(common, {
                         warnings: false,
                         drop_console: true,
                         booleans: false,
-                        loops: false
+                        collapse_vars: true,
+                        reduce_vars: true,
+                        loops: true
                     },
                     output: {
-                        comments: true,
-                        beautify: true
+                        comments: false,
+                        beautify: false
                     }
                 }
             }),
             new OptimizeCssAssetsPlugin({
                 assetNameRegExp: /\.css$/,
-                cssProcessor: require('cssnano'),
-                cssProcessorOptions: { discardComments: { removeAll: true } },
-                canPrint: true
+                cssProcessor: require('cssnano')({ zindex: false }),
+                cssProcessorOptions: {
+                    safe: true,
+                    discardComments: { removeAll: true }
+                },
+                canPrint: false
             }, {
                 copyUnmodified: true
             })
