@@ -52,10 +52,10 @@ window.h5 = {
     },
     eventInit: function() {
         var that = this;
-        document.addEventListener('touchstart', function(e) {}, false);
+        document.addEventListener('touchstart', function(e) {}, { passive: false });
         document.addEventListener('touchmove', function(e) {
             e.preventDefault();
-        }, false);
+        }, { passive: false });
         return that;
     },
     cssInit: function() {
