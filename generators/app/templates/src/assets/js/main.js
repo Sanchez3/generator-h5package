@@ -68,7 +68,7 @@ window.h5 = {
                 lastInnerHeight,
                 noChangeCount;
             end = function() {
-                // "orientationchangeend"
+                //"orientationchangeend"
                 clearInterval(interval);
                 clearTimeout(timeout);
                 interval = null;
@@ -79,7 +79,7 @@ window.h5 = {
                 if (window.innerWidth === lastInnerWidth && window.innerHeight === lastInnerHeight) {
                     noChangeCount++;
                     if (noChangeCount === noChangeCountToEnd) {
-                        // The interval resolved the issue first.
+                        //The interval resolved the issue first.
                         end();
                     }
                 } else {
@@ -89,7 +89,7 @@ window.h5 = {
                 }
             });
             timeout = setTimeout(function() {
-                // The timeout happened first.
+                //The timeout happened first.
                 end();
             }, noEndTimeout);
         });
