@@ -37,13 +37,9 @@ window.h5 = {
         var wFsize;
 
         //iphone6/6s/7/8 orientation=portrait screen.width=750px screen.height=1334px / WeChat window.innerWidth=750px window.innerHeight=1206px 
-        var wWidth = (window.screen.width > 0) ? (window.innerWidth >= window.screen.width || window.innerWidth == 0) ? screen.width :
-            window.innerWidth : window.innerWidth;
-        var wHeight = (window.screen.height > 0) ? (window.innerHeight >= window.screen.height || window.innerHeight == 0) ?
-            window.screen.height : window.innerHeight : window.innerHeight;
-        // var wWidth = window.innerWidth;
-        // var wHeight = window.innerHeight;
-        
+        var wWidth = document.documentElement.clientWidth || window.innerWidth;
+        var wHeight = document.documentElement.clientHeight || window.innerHeight;
+
         if (wWidth > wHeight) {
             wFsize = wHeight / 750 * 100;
         } else {
