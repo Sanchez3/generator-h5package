@@ -34,15 +34,12 @@ window.h5 = {
         return flag;
     },
     rootResize: function() {
-        //orientation portrait width=750px height=1334px / WeChat width=750px height=1206px 
         var wFsize;
-        //screen.width screen.height  bug !!!
-        // var wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width :
-        //     window.innerWidth : window.innerWidth;
-        // var wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ?
-        //     screen.height : window.innerHeight : window.innerHeight;
-        var wWidth = window.innerWidth;
-        var wHeight = window.innerHeight;
+
+        //iphone6/6s/7/8 orientation=portrait screen.width=750px screen.height=1334px / WeChat window.innerWidth=750px window.innerHeight=1206px 
+        var wWidth = document.documentElement.clientWidth || window.innerWidth;
+        var wHeight = document.documentElement.clientHeight || window.innerHeight;
+
         if (wWidth > wHeight) {
             wFsize = wHeight / 750 * 100;
         } else {
@@ -52,10 +49,10 @@ window.h5 = {
     },
     eventInit: function() {
         var that = this;
-        document.addEventListener('touchstart', function(e) {}, false);
+        document.addEventListener('touchstart', function(e) {}, { passive: false });
         document.addEventListener('touchmove', function(e) {
             e.preventDefault();
-        }, false);
+        }, { passive: false });
         return that;
     },
     cssInit: function() {
@@ -71,7 +68,7 @@ window.h5 = {
                 lastInnerHeight,
                 noChangeCount;
             end = function() {
-                // "orientationchangeend"
+                //"orientationchangeend"
                 clearInterval(interval);
                 clearTimeout(timeout);
                 interval = null;
@@ -82,7 +79,7 @@ window.h5 = {
                 if (window.innerWidth === lastInnerWidth && window.innerHeight === lastInnerHeight) {
                     noChangeCount++;
                     if (noChangeCount === noChangeCountToEnd) {
-                        // The interval resolved the issue first.
+                        //The interval resolved the issue first.
                         end();
                     }
                 } else {
@@ -92,7 +89,7 @@ window.h5 = {
                 }
             });
             timeout = setTimeout(function() {
-                // The timeout happened first.
+                //The timeout happened first.
                 end();
             }, noEndTimeout);
         });
