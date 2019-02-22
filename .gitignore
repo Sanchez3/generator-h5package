@@ -28,6 +28,9 @@ $RECYCLE.BIN/
 .AppleDouble
 .LSOverride
 
+# Icon must end with two \r
+Icon
+
 # Thumbnails
 ._*
 
@@ -55,6 +58,5 @@ npm-debug.log
 
 # project
 .publish
-dist
 package-lock.json
 
