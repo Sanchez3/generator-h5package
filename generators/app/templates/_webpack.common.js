@@ -1,28 +1,26 @@
 var webpack = require('webpack');
 var path = require('path');
-var CleanWebpackPlugin = require("clean-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('assets/css/css-[chunkhash].min.css');
-var extractSASS = new ExtractTextPlugin('assets/css/sass-[chunkhash].min.css');
+var extractCSS = new ExtractTextPlugin('assets/css/[name]-one.min.css');
+var extractSASS = new ExtractTextPlugin('assets/css/[name]-two.min.css');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        vendor: ['howler'],
-        main: path.resolve(__dirname, "src/assets/js/main.js")
+        app: path.resolve(__dirname, 'src/assets/js/main.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/js/[name]-[chunkhash].min.js',
+        filename: 'assets/js/[name].min.js',
     },
     module: {
         rules: [{
-            test: /(\.jsx|\.js)$/,
+            test: /\.js$/,
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ["es2015"]
+                    presets: ['@babel/preset-env']
                 }
             },
             exclude: /node_modules/,
@@ -57,6 +55,15 @@ module.exports = {
                 }
             }
         }, {
+            test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 10000,
+                name: '[name].[ext]',
+                publicPath: '../../',
+                outputPath: 'assets/media/'
+            }
+        }, {
             test: /\.(svg|woff|otf|ttf|eot)\??.*$/,
             use: {
                 loader: 'url-loader',
@@ -64,32 +71,23 @@ module.exports = {
                     limit: 1024,
                     name: '[name].[ext]',
                     publicPath: '../../',
-                    outputPath: 'assets/css/'
+                    outputPath: 'assets/fonts/'
                 }
             }
         }]
     },
     plugins: [
-        //清空dist
-        new CleanWebpackPlugin(["dist"], {
-            root: '',
-            verbose: true,
-            dry: false
-        }),
-        // new CopyWebpackPlugin([{
-        //     from: path.resolve(__dirname, "src/assets/img"),
-        //     to: path.resolve(__dirname, "dist/assets/img")
-
-        // }, {
-        //     from: path.resolve(__dirname, "src/assets/media"),
-        //     to: path.resolve(__dirname, "dist/assets/media")
-        // }]),
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, "src/assets/img"),
+            to: path.resolve(__dirname, "dist/assets/img"),
+            ignore: ['.*']
+        }, {
+            from: path.resolve(__dirname, "src/assets/media"),
+            to: path.resolve(__dirname, "dist/assets/media"),
+            ignore: ['.*']
+        }]),
         extractCSS,
         extractSASS,
-        new webpack.optimize.CommonsChunkPlugin({
-            names: "vendor",
-            minChunks: Infinity,
-        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             inject: 'body',
