@@ -32,11 +32,11 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /(\.jsx|\.js)$/,
+            test: /\.js$/,
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ["es2015"]
+                    presets: ['@babel/preset-env']
                 }
             },
             exclude: /node_modules/,
@@ -64,6 +64,17 @@ module.exports = {
                 }
             }
         }, {
+            test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+            use: {
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: '[name].[ext]',
+                    publicPath: '../../',
+                    outputPath: 'assets/media/'
+                }
+            }
+        }, {
             test: /\.(svg|woff|otf|ttf|eot)\??.*$/,
             use: {
                 loader: 'url-loader',
@@ -71,7 +82,7 @@ module.exports = {
                     limit: 1024,
                     name: '[name].[ext]',
                     publicPath: '../../',
-                    outputPath: 'assets/css/'
+                    outputPath: 'assets/fonts/'
                 }
             }
         }, {
