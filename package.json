@@ -1,6 +1,6 @@
 {
   "name": "generator-h5package",
-  "version": "3.1.0",
+  "version": "3.2.0-alpha.1",
   "description": "A Yeoman generator to generate html5 projects base on webpack",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "keywords": [
     "yeoman-generator",
     "webpack",
+    "webpack3",
     "JavaScript",
     "es2015",
     "commonjs",
@@ -40,6 +41,6 @@
   "bugs": {
     "url": "https://github.com/Sanchez3/generator-h5package/issues"
   },
-  "homepage": "https://github.com/Sanchez3/generator-h5package",
+  "homepage": "https://github.com/Sanchez3/generator-h5package/tree/for-webpack3",
   "license": "MIT"
 }
