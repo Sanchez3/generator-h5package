@@ -15,7 +15,9 @@
 
 > Note: Webpack 4.0 Release. Convention over Configuration!!! 
 >
-> Maybe Rebuilding this Plugin, Testing.
+> For webpack v3 please use [`generator-h5package@3.x.x`](https://github.com/Sanchez3/generator-h5package/tree/for-webpack3). 
+>
+> The [`generator-h5package@4.x.x`](https://github.com/Sanchez3/generator-h5package/)  supports webpack v4.
 
 `generator-h5package` is a [Yeoman](http://yeoman.io/) plugin that uses `Webpack+ Native Js` to make starting up Web projects simple, quick and easy, the same as [`generator-phaser-h5`](https://github.com/Sanchez3/generator-phaser-h5)
 
@@ -171,26 +173,7 @@ The release in  `dist/`
 
 **Use the following ways Sometime:**
 
-- Local In `webpack.common.js` Write entry vendor, Split your code into `vendor.js` and `main.js`:
-
-  ```javascript
-  entry: {
-    vendor: ["howler", "other-lib"],
-    main: path.resolve(__dirname, "src/assets/js/main.js")
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      // filename: "vendor.js"
-      // (Give the chunk a different name)
-      minChunks: Infinity,
-      // (with more entries, this ensures that no other module
-      //  goes into the vendor chunk)
-    })
-  ]
-  ```
-
-- Use `require(file)` or `import "module-name"` in `main.js`
+- Use `import "module-name"` ( recommended ) or `require(file)` in `main.js`. `CommonsChunkPlugin` Split your code into `vendor.js` and `main.js` .
 
 - Cdn [jsDelivr](http://www.jsdelivr.com/), [cdnjs](https://cdnjs.com/), [bootcdn](http://www.bootcdn.cn/) 
 
@@ -208,21 +191,22 @@ The release in  `dist/`
 - `entry`
 - `ouput`
 - `module(babel-loader, css-loader, sass-loader, url-loader)`
-- `plugins(CleanWebpackPlugin, ExtractTextPlugin,CommonsChunkPlugin,HtmlWebpackPlugin)`
+- `plugins(CopyWebpackPlugin, ExtractTextPlugin, HtmlWebpackPlugin)`
 
 **webpack.dev.js** (development)
 
 "development" configuration
 
 - `devtool:eval`  [more options](https://webpack.js.org/configuration/devtool/#development)
+- `plugins(HotModuleReplacementPlugin, NamedModulesPlugin, NoEmitOnErrorsPlugin)`
 - `devServer`
 
 **webpack.prod.js** (production)
 
 "production" configuration
 
-- `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, etc.)`
-- `devtool:none` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
+- `plugins(OptimizeCssAssetsPlugin, UglifyJsPlugin, HashedModuleIdsPlugin, ModuleConcatenationPlugin, CommonsChunkPlugin, etc.)`
+- `devtool:source-map` Omit the `devtool` option [more options](https://webpack.js.org/configuration/devtool/#production)
 
 
 ## WHAT
@@ -244,18 +228,16 @@ The release in  `dist/`
 #### 3.x.x Refactor Generator , Fix tests
 
 - **3.1.x Output Using [chunkhash]**
+- **3.2.x Fixing Bugs**
 
 ### Reference
 
-[gulp & webpack整合，鱼与熊掌我都要！](http://www.jianshu.com/p/9724c47b406c)
-
-[gulp与webpack的区别](http://www.cnblogs.com/lovesong/p/6413546.html)
-
-[前端开发利器 webpack](https://github.com/BuptStEve/blog/issues/4)
-
-[webpack 与RequireJS、browserify](https://www.amazon.cn/dp/B01MF8VAAR/ref=cm_sw_r_we_dp_0.3TzbBSB0JB1?original=1)
-
-[webpack 从入门到工程实践](http://gitbook.cn/m/mazi/article/5992553a6a71a268a9128d7b?readArticle=yes)
+-  [vue-cli](https://github.com/vuejs/vue-cli/tree/v2#vue-cli--) `webpack configuration`
+- [gulp & webpack整合，鱼与熊掌我都要！](http://www.jianshu.com/p/9724c47b406c)
+- [gulp与webpack的区别](http://www.cnblogs.com/lovesong/p/6413546.html)
+- [前端开发利器 webpack](https://github.com/BuptStEve/blog/issues/4)
+- [webpack 与RequireJS、browserify](https://www.amazon.cn/dp/B01MF8VAAR/ref=cm_sw_r_we_dp_0.3TzbBSB0JB1?original=1)
+- [webpack 从入门到工程实践](http://gitbook.cn/m/mazi/article/5992553a6a71a268a9128d7b?readArticle=yes)
 
 
 
