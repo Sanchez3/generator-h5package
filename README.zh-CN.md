@@ -15,9 +15,9 @@
 
 > Note: Webpack 4 正式发布。约定优于配置！！！
 >
-> `generator-h5package v4.0.0` 支持 `webpack 4` 
+>  [`generator-h5package@3.x.x`](https://github.com/Sanchez3/generator-h5package/tree/for-webpack3) 支持 webpack v3.
 >
-> `generator-h5package < v4.0.0` 支持 `webpack 3`
+>  [`generator-h5package@4.x.x`](https://github.com/Sanchez3/generator-h5package/) 支持 webpack v4.
 
 前端项目工程化，使用`Webpack+ Native Js` 方式开发项目，之前写过一个[基于gulp的前端h5项目生成器](https://github.com/Sanchez3/generator-phaser-h5)
 

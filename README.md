@@ -15,7 +15,9 @@
 
 > Note: `webpack 4.0` Release. Convention over Configuration!!! 
 >
-> For webpack v3 please use `generator-h5package@3.1.0`. The `generator-h5package@4.0.0` version and above supports webpack v4.
+>  [`generator-h5package@3.x.x`](https://github.com/Sanchez3/generator-h5package/tree/for-webpack3) supports webpack v3.
+>
+>  [`generator-h5package@4.x.x`](https://github.com/Sanchez3/generator-h5package/) supports webpack v4.
 
 `generator-h5package` is a [Yeoman](http://yeoman.io/) plugin that uses `Webpack+ Native Js` to make starting up Web projects simple, quick and easy, the same as [`generator-phaser-h5`](https://github.com/Sanchez3/generator-phaser-h5)
 
