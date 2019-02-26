@@ -16,7 +16,7 @@ module.exports = merge(common, {
         new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
         new webpack.NoEmitOnErrorsPlugin()
     ],
-    devtool: 'inline-source-map',
+    devtool: 'eval',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         port: 9000,
