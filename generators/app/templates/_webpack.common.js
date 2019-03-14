@@ -58,9 +58,10 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 1024,
-                    name: '[name].[ext]',
-                    publicPath: '../../',
-                    outputPath: 'assets/css/'
+                    name: 'assets/img/[name].[ext]',
+                    publicPath: function(url) {
+                        return url.replace(/assets/, '..')
+                    }
                 }
             }
         }, {
@@ -69,9 +70,10 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: '[name].[ext]',
-                    publicPath: '../../',
-                    outputPath: 'assets/media/'
+                    name: 'assets/media/[name].[ext]',
+                    publicPath: function(url) {
+                        return url.replace(/assets/, '..')
+                    }
                 }
             }
         }, {
@@ -80,9 +82,10 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 1024,
-                    name: '[name].[ext]',
-                    publicPath: '../../',
-                    outputPath: 'assets/fonts/'
+                    name: 'assets/fonts/[name].[ext]',
+                    publicPath: function(url) {
+                        return url.replace(/assets/, '..')
+                    }
                 }
             }
         }, {
