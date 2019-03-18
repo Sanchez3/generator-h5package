@@ -43,25 +43,26 @@ module.exports = {
             include: '/src/'
         }, {
             test: /(\.css|\.scss|\.sass)$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', {
-                loader: 'postcss-loader',
-                options: {
-                    plugins: () => [require('autoprefixer')({
-                        'browsers': ['> 1%', 'last 2 versions']
-                    })]
+            use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        publicPath: '../../'
+                    }
+                },
+                { loader: 'css-loader' },
+                { loader: 'sass-loader' },
+                {
+                    loader: 'postcss-loader',
+                    options: { plugins: () => [require('autoprefixer')({ 'browsers': ['> 1%', 'last 2 versions'] })] }
                 }
-
-            }]
+            ]
         }, {
             test: /\.(gif|jpg|png|ico)\??.*$/,
             use: {
                 loader: 'url-loader',
                 options: {
-                    limit: 1024,
-                    name: 'assets/img/[name].[ext]',
-                    publicPath: function(url) {
-                        return url.replace(/assets/, '..')
-                    }
+                    limit: 10000,
+                    name: 'assets/img/[name].[ext]'
                 }
             }
         }, {
@@ -70,10 +71,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'assets/media/[name].[ext]',
-                    publicPath: function(url) {
-                        return url.replace(/assets/, '..')
-                    }
+                    name: 'assets/media/[name].[ext]'
                 }
             }
         }, {
@@ -81,11 +79,8 @@ module.exports = {
             use: {
                 loader: 'url-loader',
                 options: {
-                    limit: 1024,
-                    name: 'assets/fonts/[name].[ext]',
-                    publicPath: function(url) {
-                        return url.replace(/assets/, '..')
-                    }
+                    limit: 10000,
+                    name: 'assets/fonts/[name].[ext]'
                 }
             }
         }, {
@@ -95,7 +90,8 @@ module.exports = {
                 options: {
                     minimize: true,
                     removeComments: false,
-                    collapseWhitespace: false
+                    collapseWhitespace: false,
+                    interpolate: 'require'
                 }
             }
         }]
@@ -108,21 +104,23 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, "src/assets/img"),
-            to: path.resolve(__dirname, "dist/assets/img"),
-            ignore: ['.*']
-        }, {
-            from: path.resolve(__dirname, "src/assets/media"),
-            to: path.resolve(__dirname, "dist/assets/media"),
-            ignore: ['.*']
-        }]),
+        //Copy Resource
+        // new CopyWebpackPlugin([{
+        //     from: path.resolve(__dirname, "src/assets/img"),
+        //     to: path.resolve(__dirname, "dist/assets/img"),
+        //     ignore: ['.*']
+        // }, {
+        //     from: path.resolve(__dirname, "src/assets/media"),
+        //     to: path.resolve(__dirname, "dist/assets/media"),
+        //     ignore: ['.*']
+        // }]),
         new MiniCssExtractPlugin({
             filename: 'assets/css/[name].[chunkhash].min.css',
             chunkFilename: 'assets/css/[name].[chunkhash].css'
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
+            favicon: './src/assets/img/favicon.ico',
             inject: 'body',
             hash: false,
             minify: {
