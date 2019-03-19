@@ -117,12 +117,13 @@ The release in  `dist/`
    dist
     ├── assets
     │   ├── img
+    │   ├── fonts
     │   ├── media
     │   ├── css
     │   │   └── main.[chunkhash].min.css
     │   └── js
     │       └── main.[chunkhash].min.js
-    │
+    ├── favicon.ico
     └── index.html
 ```
 
