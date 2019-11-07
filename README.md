@@ -73,7 +73,7 @@ In [browserify](https://github.com/substack/node-browserify), you use *gulp/grun
 3. **Launch it!**
 
    ```sh
-   npm run start    # Launches the server and opens the page for live development.
+   npm run serve    # Launches the server and opens the page for live development.
    npm run build    # Prepare the h5 release for distribution.
    ```
 
