@@ -12,5 +12,12 @@ module.exports = merge(common, {
         disableHostCheck: true,
         host: '0.0.0.0',
     },
-    plugins: []
+    plugins: [
+        new HashedModuleIdsPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            favicon: './src/assets/img/favicon.ico',
+            inject: 'body'
+        })
+    ]
 });

@@ -115,14 +115,5 @@ module.exports = {
                 }
             }
         ]
-    },
-    plugins: [
-        new HashedModuleIdsPlugin(),
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            favicon: './src/assets/img/favicon.ico',
-            inject: 'body'
-        })
-
-    ]
+    }
 };
