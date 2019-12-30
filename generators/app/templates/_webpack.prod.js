@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -21,9 +21,9 @@ module.exports = merge(common, {
     },
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
+            new ParallelUglifyPlugin({
                 sourceMap: true,
-                uglifyOptions: {
+                uglifyJS: {
                     compress: {
                         warnings: false,
                         drop_console: true,
@@ -49,5 +49,38 @@ module.exports = merge(common, {
                 copyUnmodified: true
             })
         ]
-    }
+    },
+    plugins: [
+        //清空dist
+        new HashedModuleIdsPlugin(),
+        new CleanWebpackPlugin(["dist"], {
+            root: '',
+            verbose: true,
+            dry: false
+        }),
+        //Copy Resource
+        // new CopyWebpackPlugin([{
+        //     from: path.resolve(__dirname, "src/assets/img"),
+        //     to: path.resolve(__dirname, "dist/assets/img"),
+        //     ignore: ['.*']
+        // }, {
+        //     from: path.resolve(__dirname, "src/assets/media"),
+        //     to: path.resolve(__dirname, "dist/assets/media"),
+        //     ignore: ['.*']
+        // }]),
+        // new MiniCssExtractPlugin({
+        //     filename: 'assets/css/[name].[chunkhash].min.css',
+        //     chunkFilename: 'assets/css/[name].[chunkhash].css'
+        // }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            favicon: './src/assets/img/favicon.ico',
+            inject: 'body',
+            hash: false,
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true
+            }
+        })
+    ]
 });

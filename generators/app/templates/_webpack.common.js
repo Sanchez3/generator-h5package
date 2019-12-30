@@ -117,36 +117,11 @@ module.exports = {
         ]
     },
     plugins: [
-        //清空dist
         new HashedModuleIdsPlugin(),
-        new CleanWebpackPlugin(["dist"], {
-            root: '',
-            verbose: true,
-            dry: false
-        }),
-        //Copy Resource
-        // new CopyWebpackPlugin([{
-        //     from: path.resolve(__dirname, "src/assets/img"),
-        //     to: path.resolve(__dirname, "dist/assets/img"),
-        //     ignore: ['.*']
-        // }, {
-        //     from: path.resolve(__dirname, "src/assets/media"),
-        //     to: path.resolve(__dirname, "dist/assets/media"),
-        //     ignore: ['.*']
-        // }]),
-        new MiniCssExtractPlugin({
-            filename: 'assets/css/[name].[chunkhash].min.css',
-            chunkFilename: 'assets/css/[name].[chunkhash].css'
-        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             favicon: './src/assets/img/favicon.ico',
-            inject: 'body',
-            hash: false,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true
-            }
+            inject: 'body'
         })
 
     ]
