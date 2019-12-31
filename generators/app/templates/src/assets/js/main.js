@@ -60,38 +60,58 @@ window.h5 = {
         var noChangeCountToEnd = 100,
             noEndTimeout = 1000;
         that.rootResize();
-        window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', function() {
-            var interval,
-                timeout,
-                end,
-                lastInnerWidth,
-                lastInnerHeight,
-                noChangeCount;
-            end = function() {
-                //"orientationchangeend"
-                clearInterval(interval);
-                clearTimeout(timeout);
-                interval = null;
-                timeout = null;
-                that.rootResize();
-            };
-            interval = setInterval(function() {
-                if (window.innerWidth === lastInnerWidth && window.innerHeight === lastInnerHeight) {
-                    noChangeCount++;
-                    if (noChangeCount === noChangeCountToEnd) {
-                        //The interval resolved the issue first.
-                        end();
-                    }
-                } else {
-                    lastInnerWidth = window.innerWidth;
-                    lastInnerHeight = window.innerHeight;
-                    noChangeCount = 0;
-                }
+
+        function orientationChanged() {
+            const timeout = 120;
+            return new window.Promise(function(resolve) {
+                var go = (i, height0) => {
+                    window.innerHeight != height0 || i >= timeout ?
+                        resolve() :
+                        window.requestAnimationFrame(() => go(i + 1, height0));
+                };
+                go(0, window.innerHeight);
             });
-            timeout = setTimeout(function() {
-                //The timeout happened first.
-                end();
-            }, noEndTimeout);
+        }
+
+        window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', function() {
+            // var interval,
+            //     timeout,
+            //     end,
+            //     lastInnerWidth,
+            //     lastInnerHeight,
+            //     noChangeCount;
+            // end = function() {
+            //     //"orientationchangeend"
+            //     clearInterval(interval);
+            //     clearTimeout(timeout);
+            //     interval = null;
+            //     timeout = null;
+            //     that.rootResize();
+            // };
+            // interval = setInterval(function() {
+            //     if (window.innerWidth === lastInnerWidth && window.innerHeight === lastInnerHeight) {
+            //         noChangeCount++;
+            //         if (noChangeCount === noChangeCountToEnd) {
+            //             //The interval resolved the issue first.
+            //             end();
+            //         }
+            //     } else {
+            //         lastInnerWidth = window.innerWidth;
+            //         lastInnerHeight = window.innerHeight;
+            //         noChangeCount = 0;
+            //     }
+            // });
+            // timeout = setTimeout(function() {
+            //     //The timeout happened first.
+            //     end();
+            // }, noEndTimeout);
+
+            /* using requestAnimationFrame */
+            orientationChanged().then(function() {
+                // Profit
+                that.rootResize();
+            });
+
         });
 
         return that;

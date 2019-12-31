@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
@@ -9,21 +11,16 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
     mode: 'production',
     output: {
-        publicPath: './'
+        publicPath: "./",
+        filename: 'assets/js/[name].[chunkhash].js',
+        chunkFilename: 'assets/js/[name].[chunkhash].js'
     },
     devtool: 'source-map',
-    devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
-        compress: true,
-        port: 9000,
-        disableHostCheck: true,
-        host: '0.0.0.0',
-    },
     optimization: {
         minimizer: [
             new ParallelUglifyPlugin({
                 sourceMap: true,
-                uglifyJS: {
+                uglifyES: {
                     compress: {
                         warnings: false,
                         drop_console: true,
@@ -39,25 +36,25 @@ module.exports = merge(common, {
                 }
             }),
             new OptimizeCssAssetsPlugin({
-                assetNameRegExp: /\.css$/,
+                assetNameRegExp: /\.css$/g,
                 cssProcessor: require('cssnano')({ zindex: false }),
                 cssProcessorOptions: {
-                    discardComments: { removeAll: true }
+                    discardComments: {
+                        removeAll: true
+                    }
                 },
                 canPrint: false
-            }, {
-                copyUnmodified: true
             })
         ]
     },
     plugins: [
         //清空dist
-        new HashedModuleIdsPlugin(),
-        new CleanWebpackPlugin(["dist"], {
-            root: '',
+        new CleanWebpackPlugin({
             verbose: true,
             dry: false
         }),
+        // keep module.id stable when vendor modules does not change
+        new webpack.HashedModuleIdsPlugin(),
         //Copy Resource
         // new CopyWebpackPlugin([{
         //     from: path.resolve(__dirname, "src/assets/img"),

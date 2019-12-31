@@ -1,10 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { HashedModuleIdsPlugin } = require('webpack');
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
     entry: {
@@ -20,8 +17,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: "/",
-        filename: 'assets/js/[name].[chunkhash].js',
-        chunkFilename: 'assets/js/[name].[chunkhash].js'
+        filename: 'assets/js/[name].js'
     },
     optimization: {
         runtimeChunk: {
@@ -63,10 +59,7 @@ module.exports = {
             }, {
                 test: /(\.css|\.scss|\.sass)$/,
                 use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: '../../'
-                        }
+                        loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
                     },
                     { loader: 'css-loader' },
                     { loader: 'sass-loader' },
@@ -100,6 +93,14 @@ module.exports = {
                     options: {
                         limit: 10000,
                         name: 'assets/fonts/[name].[ext]'
+                    }
+                }
+            }, {
+                test: /\.(glsl|frag|vert)$/,
+                use: {
+                    loader: 'raw-loader',
+                    options: {
+                        name: 'assets/glsl/[name].[ext]'
                     }
                 }
             }, {
